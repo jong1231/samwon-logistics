@@ -54,7 +54,7 @@ export default function Footer() {
             </Link>
             <Link 
               to="/privacy" 
-              className="text-[15px] font-extrabold text-[#2B4C8C] hover:text-[#1C325E] transition-colors underline underline-offset-4 decoration-2"
+              className="text-[15px] font-extrabold text-[#2B4C8C] hover:text-[#1C325E] transition-colors"
             >
               개인정보처리방침
             </Link>

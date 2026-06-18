@@ -75,7 +75,7 @@ export default function Header() {
           {/* Left: Logo */}
           <div className="flex items-center h-full">
             <Link to="/" className="flex items-center gap-2 group h-full">
-              <img src={logo} alt="삼원종합물류" className="h-7 sm:h-8 md:h-[38px] object-contain transition-transform duration-300 group-hover:scale-105" />
+              <img src={logo} alt="삼원종합물류" className="h-9 sm:h-11 md:h-[46px] object-contain transition-transform duration-300 group-hover:scale-105" />
             </Link>
           </div>
 

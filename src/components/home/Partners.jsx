@@ -4,7 +4,6 @@ import ssgLogo from '../../assets/partners/ssg.svg'
 import homeplusLogo from '../../assets/partners/homeplus.png'
 import glovisLogo from '../../assets/partners/glovis.png'
 import hyundaiDeptLogo from '../../assets/partners/hyundai_dept.png'
-import greenfoodLogo from '../../assets/partners/greenfood.png'
 import haitaiLogo from '../../assets/partners/haitai.png'
 import hanexpressLogo from '../../assets/partners/hanexpress.png'
 import dongwonLogo from '../../assets/partners/dongwon.png'
@@ -27,7 +26,6 @@ const partners = [
   { name: '홈플러스', logo: homeplusLogo },
   { name: '현대글로비스', logo: glovisLogo },
   { name: '현대백화점', logo: hyundaiDeptLogo },
-  { name: '현대그린푸드', logo: greenfoodLogo },
   { name: '해태', logo: haitaiLogo },
   { name: '한익스프레스', logo: hanexpressLogo },
   { name: '동원산업', logo: dongwonLogo },
