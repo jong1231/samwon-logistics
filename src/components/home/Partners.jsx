@@ -1,55 +1,49 @@
 import ScrollReveal from '../common/ScrollReveal'
 
-import emartLogo from '../../assets/partners/emart.png'
+import ssgLogo from '../../assets/partners/ssg.svg'
 import homeplusLogo from '../../assets/partners/homeplus.png'
-import hyundaiDeptLogo from '../../assets/partners/hyundai_dept.png'
-import megamartLogo from '../../assets/partners/megamart.png'
 import glovisLogo from '../../assets/partners/glovis.png'
-import cjLogisLogo from '../../assets/partners/cj_logis.png'
+import hyundaiDeptLogo from '../../assets/partners/hyundai_dept.png'
+import greenfoodLogo from '../../assets/partners/greenfood.png'
+import haitaiLogo from '../../assets/partners/haitai.png'
 import hanexpressLogo from '../../assets/partners/hanexpress.png'
 import dongwonLogo from '../../assets/partners/dongwon.png'
-import haitaiLogo from '../../assets/partners/haitai.png'
 import nonghyupLogo from '../../assets/partners/nonghyup.png'
 import yonseiLogo from '../../assets/partners/yonsei.png'
+import geoyoungLogo from '../../assets/partners/geoyoung.png'
 import taeeunLogo from '../../assets/partners/taeeun.png'
+import naturalwayLogo from '../../assets/partners/naturalway.png'
 import cretecLogo from '../../assets/partners/cretec.png'
 import lotteLogisLogo from '../../assets/partners/lotte_logis.png'
-import klpLogo from '../../assets/partners/klp.png'
-import kctcLogo from '../../assets/partners/kctc.png'
-import haeinLogo from '../../assets/partners/haein.png'
-import msfoodLogo from '../../assets/partners/msfood.png'
 import yuhanKimberlyLogo from '../../assets/partners/yuhan_kimberly.png'
-import naturalwayLogo from '../../assets/partners/naturalway.png'
-import kyongdongLogo from '../../assets/partners/kyongdong.png'
-import geoyoungLogo from '../../assets/partners/geoyoung.png'
+import yuhanLogo from '../../assets/partners/yuhan.svg'
+import msfoodLogo from '../../assets/partners/msfood.png'
+import kctcLogo from '../../assets/partners/kctc.png'
 import bluepharmLogo from '../../assets/partners/bluepharm.png'
-import nokwonLogo from '../../assets/partners/nokwon.png'
+import cowayLogo from '../../assets/partners/coway.svg'
 
 const partners = [
-  { name: 'SSG.COM', logo: emartLogo },
+  { name: 'SSG.COM', logo: ssgLogo },
   { name: '홈플러스', logo: homeplusLogo },
-  { name: '현대백화점', logo: hyundaiDeptLogo },
-  { name: '메가마트', logo: megamartLogo },
   { name: '현대글로비스', logo: glovisLogo },
-  { name: 'CJ대한통운', logo: cjLogisLogo },
+  { name: '현대백화점', logo: hyundaiDeptLogo },
+  { name: '현대그린푸드', logo: greenfoodLogo },
+  { name: '해태', logo: haitaiLogo },
   { name: '한익스프레스', logo: hanexpressLogo },
   { name: '동원산업', logo: dongwonLogo },
-  { name: '해태', logo: haitaiLogo },
   { name: '농협물류', logo: nonghyupLogo },
   { name: '연세우유', logo: yonseiLogo },
+  { name: '지오영', logo: geoyoungLogo },
   { name: '태은물류', logo: taeeunLogo },
+  { name: '네추럴웨이', logo: naturalwayLogo },
   { name: '크레텍책임', logo: cretecLogo },
   { name: '롯데로지스틱스', logo: lotteLogisLogo },
-  { name: '한국로지스풀', logo: klpLogo },
-  { name: 'KCTC', logo: kctcLogo },
-  { name: '해인물류시스템', logo: haeinLogo },
-  { name: '엠즈푸드시스템', logo: msfoodLogo },
   { name: '유한킴벌리', logo: yuhanKimberlyLogo },
-  { name: '네추럴웨이', logo: naturalwayLogo },
-  { name: '경동사', logo: kyongdongLogo },
-  { name: '지오영', logo: geoyoungLogo },
+  { name: '유한양행', logo: yuhanLogo },
+  { name: '엠즈푸드시스템', logo: msfoodLogo },
+  { name: 'KCTC', logo: kctcLogo },
   { name: '청십자약품', logo: bluepharmLogo },
-  { name: '녹원메디칼', logo: nokwonLogo }
+  { name: '코웨이', logo: cowayLogo }
 ]
 
 export default function Partners() {
@@ -87,4 +81,3 @@ export default function Partners() {
     </section>
   )
 }
-
