@@ -11,7 +11,10 @@ import Distribution from './pages/business/Distribution'
 import Brokerage from './pages/business/Brokerage'
 import Warehouse from './pages/business/Warehouse'
 import Recruitment from './pages/Recruitment'
+import Contact from './pages/Contact'
 import Admin from './pages/Admin'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
 
 export default function App() {
   return (
@@ -35,8 +38,15 @@ export default function App() {
         {/* 채용정보 */}
         <Route path="/recruitment" element={<Recruitment />} />
 
+        {/* 고객센터 */}
+        <Route path="/contact" element={<Contact />} />
+
         {/* 관리자 */}
         <Route path="/admin" element={<Admin />} />
+
+        {/* 푸터 하단 링크 */}
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsOfService />} />
       </Route>
     </Routes>
   )

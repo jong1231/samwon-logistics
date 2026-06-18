@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import logo from '../../assets/logo.png'
 
 const menuItems = [
   {
@@ -28,6 +29,11 @@ const menuItems = [
     path: '/recruitment',
     children: [],
   },
+  {
+    label: '고객센터',
+    path: '/contact',
+    children: [],
+  },
 ]
 
 export default function Header() {
@@ -37,7 +43,7 @@ export default function Header() {
   const location = useLocation()
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
+    const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handleScroll)
     handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
@@ -57,27 +63,24 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled || mobileOpen
-          ? 'bg-[#0A1A2F]/95 backdrop-blur-md shadow-lg shadow-black/10'
-          : 'bg-transparent'
+          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100'
+          : 'bg-white/80 backdrop-blur-sm border-b border-slate-100/50'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 bg-[#2B4C8C] rounded-lg flex items-center justify-center text-white font-extrabold text-lg group-hover:bg-[#2F2A6E] transition-colors">
-              S
-            </div>
-            <div className="flex flex-col">
-              <span className="text-white font-bold text-lg leading-tight tracking-tight">삼원종합물류</span>
-              <span className="text-white/50 text-[10px] font-medium tracking-widest">SAMWON LOGISTICS</span>
-            </div>
-          </Link>
+        <div className="flex lg:grid lg:grid-cols-3 items-center justify-between h-24">
+          
+          {/* Left: Logo */}
+          <div className="flex items-center h-full">
+            <Link to="/" className="flex items-center gap-2 group h-full">
+              <img src={logo} alt="삼원종합물류" className="h-7 sm:h-8 md:h-[38px] object-contain transition-transform duration-300 group-hover:scale-105" />
+            </Link>
+          </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          {/* Center: Desktop Navigation (Larger & Centered) */}
+          <nav className="hidden lg:flex items-center justify-self-center gap-12">
             {menuItems.map((item) => (
               <div
                 key={item.path}
@@ -87,10 +90,10 @@ export default function Header() {
               >
                 <Link
                   to={item.children.length > 0 ? item.children[0].path : item.path}
-                  className={`px-5 py-2.5 rounded-lg text-[15px] font-medium transition-all duration-300 ${
+                  className={`px-5 py-2 rounded-lg text-[17px] font-extrabold whitespace-nowrap transition-all duration-200 ${
                     isActive(item.path)
-                      ? 'text-white bg-white/10'
-                      : 'text-white/75 hover:text-white hover:bg-white/5'
+                      ? 'text-[#2B4C8C] bg-[#2B4C8C]/5'
+                      : 'text-slate-600 hover:text-[#2B4C8C] hover:bg-slate-50'
                   }`}
                 >
                   {item.label}
@@ -105,15 +108,15 @@ export default function Header() {
                         : 'opacity-0 -translate-y-2 pointer-events-none'
                     }`}
                   >
-                    <div className="bg-white rounded-xl shadow-2xl shadow-black/20 py-2 min-w-[200px] border border-gray-100">
+                    <div className="bg-white rounded-xl shadow-2xl shadow-slate-200/50 py-2 min-w-[180px] border border-slate-100">
                       {item.children.map((child) => (
                         <Link
                           key={child.path}
                           to={child.path}
-                          className={`block px-5 py-2.5 text-sm transition-colors ${
+                          className={`block px-5 py-2.5 text-sm font-semibold transition-colors ${
                             location.pathname === child.path
-                              ? 'text-[#2B4C8C] bg-blue-50 font-semibold'
-                              : 'text-gray-700 hover:text-[#2B4C8C] hover:bg-gray-50'
+                              ? 'text-[#2B4C8C] bg-[#2B4C8C]/5 font-bold'
+                              : 'text-slate-700 hover:text-[#2B4C8C] hover:bg-slate-50'
                           }`}
                         >
                           {child.label}
@@ -126,30 +129,52 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Mobile Hamburger */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden relative w-10 h-10 flex items-center justify-center z-50"
-            aria-label="메뉴"
-          >
-            <div className="w-6 flex flex-col gap-1.5">
-              <span className={`block h-0.5 bg-white rounded transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
-              <span className={`block h-0.5 bg-white rounded transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
-              <span className={`block h-0.5 bg-white rounded transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`} />
-            </div>
-          </button>
+          {/* Right: Driver Info & Mobile Hamburger */}
+          <div className="flex items-center justify-self-end gap-3">
+            {/* 에스원퀵 하이라이트 배너 */}
+            <a
+              href="https://s1quick.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden lg:flex px-4 py-2.5 bg-[#2B4C8C] hover:bg-[#1E3563] text-white text-[14px] font-bold rounded-lg transition-all duration-300 items-center gap-2 shadow-sm hover:shadow-md transform hover:-translate-y-0.5"
+            >
+              <span>⚡ 에스원퀵</span>
+            </a>
+
+            {/* 차주정보 하이라이트 배너 */}
+            <button
+              onClick={() => alert('차주정보 페이지는 준비 중입니다.')}
+              className="hidden lg:flex px-4 py-2.5 bg-[#2B4C8C] hover:bg-[#1E3563] text-white text-[14px] font-bold rounded-lg transition-all duration-300 items-center gap-2 shadow-sm hover:shadow-md transform hover:-translate-y-0.5"
+            >
+              <span>🚛 차주정보</span>
+            </button>
+
+            {/* Mobile Hamburger */}
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="lg:hidden relative w-10 h-10 flex items-center justify-center text-slate-800"
+              aria-label="메뉴"
+            >
+              <div className="w-6 flex flex-col gap-1.5">
+                <span className={`block h-0.5 bg-slate-800 rounded transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                <span className={`block h-0.5 bg-slate-800 rounded transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
+                <span className={`block h-0.5 bg-slate-800 rounded transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+              </div>
+            </button>
+          </div>
+
         </div>
       </div>
 
       {/* Mobile Sidebar */}
       <div
-        className={`lg:hidden fixed inset-0 top-0 bg-black/60 backdrop-blur-sm z-40 transition-opacity duration-300 ${
+        className={`lg:hidden fixed inset-0 top-0 bg-slate-900/40 backdrop-blur-xs z-40 transition-opacity duration-300 ${
           mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         onClick={() => setMobileOpen(false)}
       />
       <div
-        className={`lg:hidden fixed top-0 right-0 h-full w-72 bg-[#0A1A2F] z-40 transform transition-transform duration-300 shadow-2xl ${
+        className={`lg:hidden fixed top-0 right-0 h-full w-72 bg-white z-40 transform transition-transform duration-300 shadow-2xl border-l border-slate-100 ${
           mobileOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -160,11 +185,11 @@ export default function Header() {
                 <>
                   <button
                     onClick={() => setActiveDropdown(activeDropdown === item.path ? null : item.path)}
-                    className="w-full flex items-center justify-between text-white/90 font-semibold text-base py-3 border-b border-white/10"
+                    className="w-full flex items-center justify-between text-slate-800 font-bold text-base py-3 border-b border-slate-100"
                   >
                     {item.label}
                     <svg
-                      className={`w-4 h-4 transition-transform ${activeDropdown === item.path ? 'rotate-180' : ''}`}
+                      className={`w-4 h-4 text-slate-500 transition-transform ${activeDropdown === item.path ? 'rotate-180' : ''}`}
                       fill="none" viewBox="0 0 24 24" stroke="currentColor"
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -176,8 +201,8 @@ export default function Header() {
                         key={child.path}
                         to={child.path}
                         onClick={() => setMobileOpen(false)}
-                        className={`block py-2.5 pl-4 text-sm ${
-                          location.pathname === child.path ? 'text-[#2B4C8C] font-semibold' : 'text-white/60 hover:text-white'
+                        className={`block py-2.5 pl-4 text-sm font-medium ${
+                          location.pathname === child.path ? 'text-[#2B4C8C] font-semibold' : 'text-slate-600 hover:text-[#2B4C8C]'
                         }`}
                       >
                         {child.label}
@@ -189,13 +214,34 @@ export default function Header() {
                 <Link
                   to={item.path}
                   onClick={() => setMobileOpen(false)}
-                  className="block text-white/90 font-semibold text-base py-3 border-b border-white/10"
+                  className="block text-slate-800 font-bold text-base py-3 border-b border-slate-100"
                 >
                   {item.label}
                 </Link>
               )}
             </div>
           ))}
+
+          {/* 모바일 퀵 링크 & 차주정보 버튼 */}
+          <div className="mt-8 flex flex-col gap-3">
+            <a
+              href="https://s1quick.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-3 bg-[#2B4C8C] text-white text-center font-bold rounded-xl shadow-sm hover:bg-[#1E3563] transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              <span>⚡ 에스원퀵</span>
+            </a>
+            <button
+              onClick={() => {
+                setMobileOpen(false)
+                alert('차주정보 페이지는 준비 중입니다.')
+              }}
+              className="w-full py-3 bg-[#2B4C8C] text-white text-center font-bold rounded-xl shadow-sm hover:bg-[#1E3563] transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              <span>🚛 차주정보</span>
+            </button>
+          </div>
         </div>
       </div>
     </header>

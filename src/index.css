@@ -94,13 +94,13 @@ body {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(10, 26, 47, 0.7), rgba(10, 26, 47, 0.85));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.45));
 }
 
 .page-banner-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(10, 26, 47, 0.65), rgba(10, 26, 47, 0.8));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(248, 250, 252, 0.8));
 }
 
 /* Timeline styles */
