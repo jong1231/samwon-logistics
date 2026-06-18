@@ -2,10 +2,9 @@ import { Link, useLocation } from 'react-router-dom'
 
 const breadcrumbMap = {
   '/company': '회사소개',
-  '/company/ceo': 'CEO 인사말',
-  '/company/history': '주요 연혁',
-  '/company/subsidiaries': '계열사 현황',
-  '/company/equipment': '장비 보유 현황',
+  '/company/intro': '회사소개',
+  '/company/history': '회사연혁',
+  '/company/status': '주요현황',
   '/company/location': '찾아오시는 길',
   '/business': '사업영역',
   '/business/corporate': '기업물류',
@@ -13,6 +12,8 @@ const breadcrumbMap = {
   '/business/brokerage': '주선·퀵서비스',
   '/business/warehouse': '창고운영',
   '/recruitment': '채용정보',
+  '/recruitment/talent': '인재상',
+  '/recruitment/jobs': '차주구인',
 }
 
 export default function PageBanner({ title, subtitle, backgroundImage }) {

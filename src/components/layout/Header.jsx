@@ -7,10 +7,9 @@ const menuItems = [
     label: '회사소개',
     path: '/company',
     children: [
-      { label: 'CEO 인사말', path: '/company/ceo' },
-      { label: '주요 연혁', path: '/company/history' },
-      { label: '계열사 현황', path: '/company/subsidiaries' },
-      { label: '장비 보유 현황', path: '/company/equipment' },
+      { label: '회사소개', path: '/company/intro' },
+      { label: '회사연혁', path: '/company/history' },
+      { label: '주요현황', path: '/company/status' },
       { label: '찾아오시는 길', path: '/company/location' },
     ],
   },
@@ -27,7 +26,10 @@ const menuItems = [
   {
     label: '채용정보',
     path: '/recruitment',
-    children: [],
+    children: [
+      { label: '인재상', path: '/recruitment/talent' },
+      { label: '차주구인', path: '/recruitment/jobs' },
+    ],
   },
   {
     label: '고객센터',

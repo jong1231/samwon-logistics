@@ -47,7 +47,7 @@ export default function Footer() {
           {/* Right: Flat Links */}
           <div className="flex flex-wrap items-center gap-x-8 gap-y-4 lg:justify-end">
             <Link 
-              to="/company/ceo" 
+              to="/company/intro" 
               className="text-[15px] font-bold text-slate-600 hover:text-[#2B4C8C] transition-colors"
             >
               회사소개

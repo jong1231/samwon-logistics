@@ -1,16 +1,16 @@
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import Home from './pages/Home'
-import CeoMessage from './pages/company/CeoMessage'
+import Intro from './pages/company/Intro'
 import History from './pages/company/History'
-import Subsidiaries from './pages/company/Subsidiaries'
-import Equipment from './pages/company/Equipment'
+import Status from './pages/company/Status'
 import Location from './pages/company/Location'
 import Corporate from './pages/business/Corporate'
 import Distribution from './pages/business/Distribution'
 import Brokerage from './pages/business/Brokerage'
 import Warehouse from './pages/business/Warehouse'
-import Recruitment from './pages/Recruitment'
+import Talent from './pages/recruitment/Talent'
+import DriverJobs from './pages/recruitment/DriverJobs'
 import Contact from './pages/Contact'
 import Admin from './pages/Admin'
 import PrivacyPolicy from './pages/PrivacyPolicy'
@@ -23,10 +23,9 @@ export default function App() {
         <Route path="/" element={<Home />} />
 
         {/* 회사소개 */}
-        <Route path="/company/ceo" element={<CeoMessage />} />
+        <Route path="/company/intro" element={<Intro />} />
         <Route path="/company/history" element={<History />} />
-        <Route path="/company/subsidiaries" element={<Subsidiaries />} />
-        <Route path="/company/equipment" element={<Equipment />} />
+        <Route path="/company/status" element={<Status />} />
         <Route path="/company/location" element={<Location />} />
 
         {/* 사업영역 */}
@@ -36,7 +35,8 @@ export default function App() {
         <Route path="/business/warehouse" element={<Warehouse />} />
 
         {/* 채용정보 */}
-        <Route path="/recruitment" element={<Recruitment />} />
+        <Route path="/recruitment/talent" element={<Talent />} />
+        <Route path="/recruitment/jobs" element={<DriverJobs />} />
 
         {/* 고객센터 */}
         <Route path="/contact" element={<Contact />} />
