@@ -124,11 +124,6 @@ export default function BusinessPage({ contentKey }) {
                     alt={data.title}
                     className="w-full h-72 sm:h-96 object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700"
                   />
-                  {/* Subtle brand tag overlay */}
-                  <div className="absolute bottom-6 left-6 z-20 bg-white/90 backdrop-blur-md px-4 py-2 rounded-2xl shadow-sm border border-slate-100">
-                    <p className="text-[#0A1A2F] font-black text-sm">{data.title}</p>
-                    <p className="text-[#2B4C8C] font-bold text-[10px] tracking-widest uppercase mt-0.5">SAMWON LOGISTICS</p>
-                  </div>
                 </div>
               </ScrollReveal>
             </div>
