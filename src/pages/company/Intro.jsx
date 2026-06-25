@@ -12,15 +12,17 @@ export default function Intro() {
     (sub) => sub.name !== '삼원종합물류㈜' && sub.name !== '삼원종합물류(주)'
   )
 
-  const profileItems = [
-    { label: '회사명', value: company.name },
-    { label: '대표이사', value: company.ceo },
-    { label: '설립일', value: company.founded },
-    { label: '사업자등록번호', value: company.bizNumber },
-    { label: '대표번호', value: company.phone },
-    { label: '팩스번호', value: company.fax },
-    { label: '본사 주소', value: company.address },
-    { label: '이천 차고지', value: company.garage },
+  const offices = [
+    { name: '서울 본사', address: '서울시 서초구 효령로 328 아트리트21 6층' },
+    { name: '인천 스마트허브', address: '인천광역시 서구 북항단지로 91 스마트허브센터' },
+    { name: '남이천 물류센터', address: '경기도 이천시 모가면 공원로 134 B동 남이천 물류센터' },
+    { name: '부산 사무소', address: '부산광역시 동구' },
+    { name: '현대백화점 압구정본점', address: '서울시 강남구 압구정로 165 현대백화점압구정본점 지하 1층' },
+    { name: '현대백화점 신촌점', address: '서울시 서대문구 신촌로 83 현대백화점신촌점 지하 5층' },
+    { name: '더현대 서울', address: '서울시 영등포구 여의대로 108 더현대 서울 지하3층' },
+    { name: '현대백화점 킨텍스점', address: '경기도 고양시 일산서구 호수로 817 현대백화점킨텍스점 지하3층' },
+    { name: '이천 율면 사무소', address: '경기도 이천시 율면' },
+    { name: '이천 석산리 사무소', address: '경기도 이천시 석산리' }
   ]
 
   return (
@@ -46,34 +48,75 @@ export default function Intro() {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <ScrollReveal direction="left" className="space-y-6">
-              <h3 className="text-2xl font-bold text-[#0A1A2F] leading-snug">
+          <div className="max-w-4xl mx-auto text-center">
+            <ScrollReveal className="space-y-6">
+              <h3 className="text-2xl md:text-3xl font-bold text-[#0A1A2F] leading-snug">
                 고객의 성공을 지원하는 <br />
                 <span className="text-[#2B4C8C]">최상의 종합 물류 인프라</span>
               </h3>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-600 leading-relaxed text-base md:text-lg">
                 삼원종합물류(주)는 1992년 설립 이후 지난 34년간 신뢰와 전문성을 바탕으로 전국 단위의 촘촘한 유통·기업 물류망을 구축해 왔습니다. 미들마일 수송부터 최종 라스트마일 배송, 창고 보관 서비스까지 끊김이 없는(Seamless) 원스톱 종합 물류 솔루션을 제공합니다.
               </p>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-600 leading-relaxed text-base md:text-lg">
                 지속 가능한 친환경 전기·수소 화물차의 선제적 도입 및 스마트 WMS/TMS IT 기술 연동을 통해 탄소 배출 저감 및 투명한 화물 추적 서비스를 제공하여, 스마트 ESG 물류 생태계를 앞장서서 실천하고 있습니다.
               </p>
             </ScrollReveal>
+          </div>
+        </div>
+      </section>
 
-            <ScrollReveal direction="right" className="bg-[#F8FAFC] rounded-3xl p-8 border border-slate-100 shadow-sm">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {profileItems.map((item, index) => (
-                  <div key={index} className={`pb-4 border-b border-slate-200/60 ${index >= 6 ? 'sm:col-span-2' : ''}`}>
-                    <span className="text-xs font-bold text-slate-400 block mb-1">
-                      {item.label}
-                    </span>
-                    <span className="text-sm font-semibold text-slate-700 leading-relaxed">
-                      {item.value}
-                    </span>
+      {/* 핵심 역량 (Core Competencies) */}
+      <section className="py-20 bg-slate-50 border-b border-slate-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <span className="text-[#2B4C8C] font-semibold text-sm tracking-widest uppercase bg-[#2B4C8C]/5 px-3 py-1 rounded-full">
+                Core Competencies
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0A1A2F] mt-3">핵심 역량</h2>
+              <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {content.coreValues.map((item, i) => (
+              <ScrollReveal key={i} delay={i * 100}>
+                <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md border border-slate-100 transition-all duration-300 h-full">
+                  <div className="text-4xl mb-4">{item.icon}</div>
+                  <h3 className="text-lg font-bold text-[#0A1A2F] mb-3">{item.title}</h3>
+                  <p className="text-slate-500 leading-relaxed text-sm">{item.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 사무소 현황 (Office Locations) */}
+      <section className="py-20 bg-white border-b border-slate-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <span className="text-[#2B4C8C] font-semibold text-sm tracking-widest uppercase bg-[#2B4C8C]/5 px-3 py-1 rounded-full">
+                Offices
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0A1A2F] mt-3">사무소 현황</h2>
+              <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {offices.map((office, i) => (
+              <ScrollReveal key={i} delay={i * 50}>
+                <div className="bg-[#F8FAFC] border border-slate-100 rounded-2xl p-6 hover:shadow-md transition-all duration-300 h-full flex items-start gap-4">
+                  <div className="text-[#2B4C8C] text-xl mt-1">📍</div>
+                  <div>
+                    <h3 className="font-bold text-slate-800 text-[15px] mb-1">{office.name}</h3>
+                    <p className="text-slate-500 text-xs leading-relaxed">{office.address}</p>
                   </div>
-                ))}
-              </div>
-            </ScrollReveal>
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>

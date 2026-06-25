@@ -51,7 +51,7 @@ export default function Partners() {
         <ScrollReveal>
           <div className="text-center mb-12">
             <span className="text-[#2B4C8C] font-semibold text-sm tracking-widest uppercase">Partners</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-3">주요 고객사·파트너</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-3">파트너사</h2>
             <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
           </div>
         </ScrollReveal>
@@ -70,7 +70,9 @@ export default function Partners() {
               <img
                 src={partner.logo}
                 alt={partner.name}
-                className="max-h-[80%] max-w-[85%] object-contain opacity-95 hover:opacity-100 transition-all duration-300"
+                className={`object-contain opacity-95 hover:opacity-100 transition-all duration-300 ${
+                  partner.name === '현대글로비스' ? 'max-h-[95%] max-w-[98%] scale-135' : 'max-h-[80%] max-w-[85%]'
+                }`}
               />
             </div>
           ))}

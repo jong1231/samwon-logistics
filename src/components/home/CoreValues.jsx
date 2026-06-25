@@ -9,8 +9,8 @@ export default function CoreValues() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <span className="text-[#2B4C8C] font-semibold text-sm tracking-widest uppercase">Core Values</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A1A2F] mt-3">핵심 가치</h2>
+            <span className="text-[#2B4C8C] font-semibold text-sm tracking-widest uppercase">Core Competencies</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0A1A2F] mt-3">핵심 역량</h2>
             <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
           </div>
         </ScrollReveal>

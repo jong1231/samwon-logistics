@@ -856,9 +856,9 @@ export default function Admin() {
                 </div>
               </div>
 
-              {/* 핵심 가치 */}
+              {/* 핵심 역량 */}
               <div className="border-t pt-6 space-y-4">
-                <h3 className="text-lg font-bold text-slate-800">🏆 핵심 가치 (Core Values)</h3>
+                <h3 className="text-lg font-bold text-slate-800">🏆 핵심 역량 (Core Competencies)</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {(editContent.coreValues || []).map((val, idx) => (
                     <div key={idx} className="bg-slate-50 border p-4 rounded-xl grid grid-cols-1 sm:grid-cols-4 gap-3">

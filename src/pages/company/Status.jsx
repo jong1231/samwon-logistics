@@ -114,7 +114,7 @@ export default function Status() {
                 Partners
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-[#0A1A2F] mt-3">
-                주요 거래처
+                파트너사
               </h2>
               <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
               <p className="text-slate-500 text-sm mt-4">
@@ -122,7 +122,7 @@ export default function Status() {
               </p>
             </div>
           </ScrollReveal>
-
+ 
           {/* Partners Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {partners.map((partner, i) => (
@@ -131,7 +131,9 @@ export default function Status() {
                   <img
                     src={partner.logo}
                     alt={partner.name}
-                    className="max-h-[70%] max-w-[80%] object-contain opacity-90 hover:opacity-100 transition-opacity"
+                    className={`object-contain opacity-90 hover:opacity-100 transition-opacity ${
+                      partner.name === '현대글로비스' ? 'max-h-[90%] max-w-[95%] scale-135' : 'max-h-[70%] max-w-[80%]'
+                    }`}
                   />
                 </div>
               </ScrollReveal>
