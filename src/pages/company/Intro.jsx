@@ -7,9 +7,9 @@ export default function Intro() {
   const { company, ceo } = content
 
   // Filter out the parent company from subsidiaries list if present, to only show the requested 5 subsidiaries
-  // Parent is "삼원종합물류㈜", children: 삼원운수㈜, ㈜서진물류, 동국상운㈜, ㈜에스원글로벌, ㈜에스엘맨파워
+  // Parent is "삼원종합물류(주)", children: 삼원운수(주), (주)서진물류, 동국상운(주), (주)에스원글로벌, (주)에스엘맨파워
   const targetSubsidiaries = content.subsidiaries.filter(
-    (sub) => sub.name !== '삼원종합물류㈜'
+    (sub) => sub.name !== '삼원종합물류㈜' && sub.name !== '삼원종합물류(주)'
   )
 
   const profileItems = [
@@ -154,12 +154,7 @@ export default function Intro() {
             {targetSubsidiaries.map((sub, i) => (
               <ScrollReveal key={i} delay={i * 100}>
                 <div className="bg-[#F8FAFC] rounded-2xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col h-full border border-slate-100 hover:border-[#2B4C8C]/30 text-center">
-                  <div className="w-16 h-16 bg-white rounded-2xl mx-auto mb-5 flex items-center justify-center shadow-xs border border-slate-200/40">
-                    <span className="text-2xl font-extrabold text-[#2B4C8C]">
-                      {sub.name.includes('(') ? sub.name.replace(/\([^)]*\)/, '').charAt(0) : sub.name.charAt(0)}
-                    </span>
-                  </div>
-                  <h4 className="text-base font-bold text-slate-800 mb-2 truncate">
+                  <h4 className="text-[17px] font-extrabold text-[#2B4C8C] mb-3">
                     {sub.name}
                   </h4>
                   <p className="text-slate-500 text-xs leading-relaxed flex-1">

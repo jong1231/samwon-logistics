@@ -17,10 +17,12 @@ const menuItems = [
     label: '사업영역',
     path: '/business',
     children: [
+      { label: '전체소개', path: '/business' },
       { label: '기업물류', path: '/business/corporate' },
       { label: '유통물류', path: '/business/distribution' },
       { label: '주선·퀵서비스', path: '/business/brokerage' },
       { label: '창고운영', path: '/business/warehouse' },
+      { label: '물류컨설팅', path: '/business/consulting' },
     ],
   },
   {
@@ -135,20 +137,20 @@ export default function Header() {
           <div className="flex items-center justify-self-end gap-3">
             {/* 에스원퀵 하이라이트 배너 */}
             <a
-              href="https://s1quick.com"
+              href="https://samwonlogistics.co.kr/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden lg:flex px-4 py-2.5 bg-[#2B4C8C] hover:bg-[#1E3563] text-white text-[14px] font-bold rounded-lg transition-all duration-300 items-center gap-2 shadow-sm hover:shadow-md transform hover:-translate-y-0.5"
+              className="hidden lg:flex px-4 py-2 border border-slate-300 hover:border-[#2B4C8C] text-slate-700 hover:text-[#2B4C8C] hover:bg-slate-50 text-[14px] font-extrabold rounded-md transition-all duration-300 items-center gap-1 shadow-xs"
             >
-              <span>⚡ 에스원퀵</span>
+              <span>에스원퀵</span>
             </a>
 
             {/* 차주정보 하이라이트 배너 */}
             <button
               onClick={() => alert('차주정보 페이지는 준비 중입니다.')}
-              className="hidden lg:flex px-4 py-2.5 bg-[#2B4C8C] hover:bg-[#1E3563] text-white text-[14px] font-bold rounded-lg transition-all duration-300 items-center gap-2 shadow-sm hover:shadow-md transform hover:-translate-y-0.5"
+              className="hidden lg:flex px-4 py-2 border border-slate-300 hover:border-[#2B4C8C] text-slate-700 hover:text-[#2B4C8C] hover:bg-slate-50 text-[14px] font-extrabold rounded-md transition-all duration-300 items-center gap-1 shadow-xs"
             >
-              <span>🚛 차주정보</span>
+              <span>차주정보</span>
             </button>
 
             {/* Mobile Hamburger */}
@@ -227,21 +229,21 @@ export default function Header() {
           {/* 모바일 퀵 링크 & 차주정보 버튼 */}
           <div className="mt-8 flex flex-col gap-3">
             <a
-              href="https://s1quick.com"
+              href="https://samwonlogistics.co.kr/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3 bg-[#2B4C8C] text-white text-center font-bold rounded-xl shadow-sm hover:bg-[#1E3563] transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full py-3 border border-slate-300 text-slate-700 text-center font-bold rounded-xl shadow-xs hover:bg-slate-50 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              <span>⚡ 에스원퀵</span>
+              <span>에스원퀵</span>
             </a>
             <button
               onClick={() => {
                 setMobileOpen(false)
                 alert('차주정보 페이지는 준비 중입니다.')
               }}
-              className="w-full py-3 bg-[#2B4C8C] text-white text-center font-bold rounded-xl shadow-sm hover:bg-[#1E3563] transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full py-3 border border-slate-300 text-slate-700 text-center font-bold rounded-xl shadow-xs hover:bg-slate-50 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              <span>🚛 차주정보</span>
+              <span>차주정보</span>
             </button>
           </div>
         </div>

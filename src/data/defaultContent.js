@@ -1,3 +1,8 @@
+import businessCorporateImg from '../assets/business_corporate.png'
+import businessDistributionImg from '../assets/business_distribution.png'
+import businessWarehouseImg from '../assets/business_warehouse.png'
+import businessBrokerageImg from '../assets/business_brokerage.png'
+
 export const defaultContent = {
   company: {
     name: '삼원종합물류㈜',
@@ -73,7 +78,7 @@ export const defaultContent = {
     fax: '02-597-2564',
     subway: '3호선 남부터미널역 3번 출구 도보 5분',
     bus: '서초동예술의전당 정류장 하차 (1500, 3000, 401)',
-    parking: '건물 주차장 이용 가능 (방문 시 무료 주차 도장 발급)'
+    parking: '건물 기계식 주차장 이용 가능(방문 시 무료주차 도장 발급)'
   },
   recruitment: {
     title: '삼원종합물류와 함께 성장할 인재를 찾습니다',
@@ -101,6 +106,8 @@ export const defaultContent = {
     corporate: {
       title: '기업물류 (Middle Mile)',
       bannerImage: 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=1920&q=80',
+      label: 'MIDDLE MILE',
+      slogan: '산업의 흐름이 멈추지 않도록 — 생산지와 거점을 잇는 가장 안정적인 구간',
       overview: '생산지에서 물류센터, 혹은 거점 간을 연결하는 미들마일 구간에서 가장 안정적이고 효율적인 운송 서비스를 제공합니다. 전자/기기, 의약품/유제품, 신선/F&B, 편의점/공산품 등 산업별 특성에 맞춘 전문 차량 배치와 철저한 JIT(Just-In-Time) 적기 운송 시스템을 가동하고 있습니다.',
       strengths: [
         { icon: '💻', title: '전자 / 기기', desc: '가전 및 대형 산업용 설비 정밀 결박 및 JIT 적기 운송' },
@@ -108,22 +115,32 @@ export const defaultContent = {
         { icon: '🥩', title: '신선 / F&B', desc: 'HACCP 기반 축산물 및 식자재 전문 차량 상시 대기' },
         { icon: '🏪', title: '편의점 / 공산품', desc: '전국 거점 간 B2B 대량 간선 수송 및 안정적 공급망 구축' }
       ],
-      image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80'
+      image: businessCorporateImg,
+      quote: '생산이 멈추지 않으려면, 운송이 먼저 멈추지 않아야 합니다.',
+      quoteDesc: '삼원종합물류는 산업별 전용 차량과 JIT 시스템으로 그 약속을 지킵니다.',
+      quoteTag: 'MIDDLE MILE'
     },
     distribution: {
       title: '유통물류 (Last Mile)',
       bannerImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=80',
+      label: 'LAST MILE',
+      slogan: '고객의 문 앞, 그 마지막 순간까지 — 브랜드 경험을 완성하는 정시 배송',
       overview: '고객의 문 앞까지 연결되는 유통물류(Last Mile)에서 완벽한 배송 품질로 가치를 극대화합니다. 대형 이커머스 전담 인프라, 백화점 VIP 선물 배송을 위한 퀵 커머스, 투명성을 보장하는 의약품 라스트마일 등 삼원만의 차별화된 정시 배송 체계를 운영합니다.',
       strengths: [
         { icon: '🛒', title: '온라인 커머스', desc: 'SSG.COM, 홈플러스 등 B2C 대형 마트 전담 배송 인프라 운용' },
         { icon: '⚡', title: '오프라인 퀵 커머스', desc: '도심형 물류 거점 O4O 최적화 및 당일 특화 고품격 배송' },
         { icon: '💊', title: '의약품 유통', desc: '전국 약국/병원 전용 배송, 운송 전 검수 및 실시간 온도 관제' }
       ],
-      image: 'https://images.unsplash.com/photo-1565891741441-64926e441838?w=800&q=80'
+      image: businessDistributionImg,
+      quote: '배송이 끝나는 곳에서, 브랜드의 첫 인상이 완성됩니다.',
+      quoteDesc: '삼원종합물류는 마지막 1미터까지 책임지는 정시 배송으로 답합니다.',
+      quoteTag: 'LAST MILE'
     },
     brokerage: {
       title: '주선 · 에스원 퀵 서비스',
       bannerImage: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1920&q=80',
+      label: 'BROKERAGE & QUICK SERVICE',
+      slogan: '전화 한 통 없이 끝나는 물류 — 접수부터 정산까지 잇는 디지털 혁신',
       overview: '에스원 퀵 플랫폼을 통해 접수부터 정산까지 원스톱으로 처리되는 디지털 혁신 솔루션입니다. 복잡한 전화 접수와 불투명한 수배 과정을 해결하고, 오더 및 배송 현황을 1:1로 실시간 공유합니다.',
       strengths: [
         { icon: '📱', title: '웹 접수 & 즉시 배차', desc: '간편 오더 입력 및 실시간 배차로 대기 시간 획기적 단축' },
@@ -131,11 +148,16 @@ export const defaultContent = {
         { icon: '📑', title: '월별 통합 결제', desc: '건별 현금 정산 탈피, 월 1회 세금계산서 일괄 발행 회계 간소화' },
         { icon: '👥', title: '부서별 개별 ID 제공', desc: '전 직원 희망 시 계정 부여, 부서별 오더 및 통계 관리 최적화' }
       ],
-      image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&q=80'
+      image: businessBrokerageImg,
+      quote: '복잡한 물류는 전화 한 통으로 끝나지 않습니다.',
+      quoteDesc: '에스원 퀵은 접수부터 정산까지, 단 하나의 화면으로 완결됩니다.',
+      quoteTag: 'S-ONE QUICK'
     },
     warehouse: {
       title: '창고운영 및 리스크관리',
       bannerImage: 'https://images.unsplash.com/photo-1565891741441-64926e441838?w=1920&q=80',
+      label: 'WAREHOUSING & RISK MANAGEMENT',
+      slogan: '보이지 않는 곳에서 더 철저하게 — 안전과 투명성을 모두 갖춘 운영 시스템',
       overview: '안전하고 투명한 창고 운영 체계를 기반으로 종합 물류 서비스를 수행합니다. WMS(창고관리시스템)로 휴먼 에러를 제거하고, 화물 보험 및 24/7 전담 관제팀 가동으로 모든 종류의 리스크를 원천적으로 예방합니다.',
       strengths: [
         { icon: '🏭', title: 'WMS 기반 보관', desc: '이천 물류센터 및 백화점 내 입출고/재고실사 완벽 자동화' },
@@ -143,7 +165,27 @@ export const defaultContent = {
         { icon: '🛡️', title: '24/7 전담 관제', desc: '돌발 상황에 즉시 대응하는 연중무휴 관제 및 모니터링 시스템' },
         { icon: '💰', title: '종합 보험 & 보상', desc: '화물/화재/배상책임 종합 보험 가입 및 투명한 보상 규정 작동' }
       ],
-      image: 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80'
+      image: businessWarehouseImg,
+      quote: '안전은 보이지 않을 때 가장 빛납니다.',
+      quoteDesc: '삼원종합물류는 시스템과 사람, 두 겹의 안전망으로 리스크를 예방합니다.',
+      quoteTag: 'WAREHOUSING'
+    },
+    consulting: {
+      title: '물류컨설팅 (SCM Consulting)',
+      bannerImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80',
+      label: 'SCM CONSULTING',
+      slogan: '30년 노하우와 IT 빅데이터를 접목한 공급망 비용 최적화',
+      overview: '삼원종합물류의 물류컨설팅은 30년 전통의 축적된 현장 경험과 첨단 스마트 IT 기술을 결합하여 고객사의 공급망관리(SCM) 전반을 혁신합니다. 비용 분석, 운송 거점 최적화, 최적 배차 경로 설계, 창고 관리 프로세스 진단 및 ESG 물류 대응 로드맵까지, 고객사 맞춤형 통합 컨설팅 솔루션을 제공하여 실질적인 비용 절감과 서비스 수준 향상(SLA 극대화)을 실현합니다.',
+      strengths: [
+        { icon: '📊', title: 'SCM 공급망 최적화', desc: '원자재 조달부터 최종 소비지까지 물류 흐름을 분석하여 리드타임을 단축하고 비효율 요소를 제거합니다.' },
+        { icon: '💡', title: '물류 비용 및 운송 분석', desc: '고객사의 기존 운송 데이터를 시뮬레이션하여 최적의 거점과 최적 배차 경로 설계를 통해 운송 비용을 획기적으로 낮춥니다.' },
+        { icon: '🏭', title: '스마트 창고(WMS) 레이아웃 설계', desc: '제품 특성에 맞는 창고 보관 레이아웃 및 적치 방식 설계, 자동화 설비 도입 타당성 및 재고 실사 자동화 진단을 제공합니다.' },
+        { icon: '🌱', title: '친환경 ESG 물류 컨설팅', desc: '전기/수소 화물차 도입 타당성 분석, 탄소 배출 저감 경로 시뮬레이션 및 ESG 경영 표준 도입을 지원합니다.' }
+      ],
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
+      quote: '물류 혁신은 보이지 않는 비용을 찾아내는 것부터 시작됩니다.',
+      quoteDesc: '삼원종합물류는 30년 노하우와 데이터 분석으로 최상의 효율을 설계합니다.',
+      quoteTag: 'SCM CONSULTING'
     }
   }
 }

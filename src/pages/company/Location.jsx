@@ -6,14 +6,12 @@ export default function Location() {
   const { content } = useContent()
   const { location } = content
 
-  const infoCards = [
-    { icon: '📍', title: '주소', value: location.address },
-    { icon: '🚇', title: '지하철', value: location.subway },
-    { icon: '🚌', title: '버스', value: location.bus },
-    { icon: '🅿️', title: '주차', value: location.parking },
-  ]
-
+  // Naver Map Search URL for the address
   const naverMapUrl = `https://map.naver.com/v5/search/${encodeURIComponent(location.address)}`
+  // Kakao Map Search URL
+  const kakaoMapUrl = `https://map.kakao.com/?q=${encodeURIComponent(location.address)}`
+  // Google Map Embed URL - Clean query with company name and high zoom to pinpoint the building
+  const googleMapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent('서울특별시 서초구 효령로 328 삼원종합물류')}&t=&z=18&ie=UTF8&iwloc=&output=embed`
 
   return (
     <>
@@ -24,104 +22,135 @@ export default function Location() {
       />
 
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Naver Map Integration Container */}
+          {/* Section Header */}
           <ScrollReveal>
-            <div className="relative w-full h-80 md:h-96 bg-[#F1F5F9] rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm mb-6 group">
-              {/* Mock Map Background Grid & Streets */}
-              <div className="absolute inset-0 opacity-40 bg-[linear-gradient(to_right,#cbd5e1_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e1_1px,transparent_1px)] bg-[size:40px_40px]" />
-              
-              {/* Mock Subway & Landmark icons on the map */}
-              <div className="absolute top-1/4 left-1/4 bg-amber-50 border border-amber-200 text-amber-800 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full shadow-xs">
-                🚇 남부터미널역 (3호선)
-              </div>
-              <div className="absolute bottom-1/4 right-1/4 bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full shadow-xs">
-                🌳 예술의전당
-              </div>
-              <div className="absolute top-1/3 right-1/3 bg-slate-100 border border-slate-300 text-slate-700 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full shadow-xs">
-                🏢 서초아트자이
-              </div>
-
-              {/* Main Pin */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
-                <span className="relative flex h-6 w-6">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-6 w-6 bg-red-500 border-2 border-white shadow-md"></span>
-                </span>
-                <div className="bg-slate-900 text-white font-extrabold text-xs px-3 py-2 rounded-xl shadow-lg border border-slate-800 whitespace-nowrap mt-2 flex flex-col items-center">
-                  <span>📍 삼원종합물류(주)</span>
-                  <span className="text-[10px] text-slate-400 font-medium mt-0.5">아트리트21 6층</span>
-                </div>
-              </div>
-
-              {/* Hover overlay link to Naver Maps */}
-              <a 
-                href={naverMapUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute inset-0 bg-slate-900/5 hover:bg-slate-900/20 transition-all duration-300 flex items-center justify-center cursor-pointer group"
-              >
-                <div className="bg-white/95 backdrop-blur-xs text-slate-800 font-extrabold px-6 py-3 rounded-2xl shadow-xl border border-slate-200/50 flex items-center gap-2 transform transition-transform group-hover:scale-105">
-                  <span>🗺️ 네이버 지도로 위치 보기</span>
-                  <svg className="w-4 h-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </div>
-              </a>
+            <div className="text-center mb-12">
+              <span className="text-[#2B4C8C] font-extrabold text-xs tracking-widest uppercase">Location & Map</span>
+              <h2 className="text-3xl font-extrabold text-[#0A1A2F] mt-2">삼원종합물류 본사 위치</h2>
+              <div className="w-12 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
             </div>
           </ScrollReveal>
 
-          {/* Naver Map Button row */}
+          {/* 1. Map Container - Shows directly */}
           <ScrollReveal>
-            <div className="flex flex-col sm:flex-row justify-end gap-3 mb-12">
+            <div className="relative w-full h-[400px] sm:h-[480px] bg-slate-100 rounded-3xl overflow-hidden border border-slate-200 shadow-xl group">
+              <iframe
+                title="삼원종합물류 본사 지도"
+                src={googleMapEmbedUrl}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full"
+              />
+            </div>
+          </ScrollReveal>
+
+          {/* Spacing below the map */}
+          <div className="h-12" />
+
+          {/* 2. Map Quick Link Buttons for Naver & Kakao Navigation */}
+          <ScrollReveal>
+            <div className="flex flex-wrap justify-center gap-4 mb-16">
               <a
                 href={naverMapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-[#03C75A] hover:bg-[#02b350] text-white text-center font-bold rounded-xl shadow-sm transition-colors duration-300 flex items-center justify-center gap-2"
+                className="px-6 py-3.5 bg-[#03C75A] hover:bg-[#02b350] text-white font-extrabold rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm"
               >
-                <span>💚 네이버 지도로 길찾기</span>
+                <span>💚 네이버 지도로 열기</span>
+              </a>
+              <a
+                href={kakaoMapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3.5 bg-[#FEE500] hover:bg-[#fddb00] text-[#191919] font-extrabold rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm"
+              >
+                <span>💛 카카오맵으로 열기</span>
               </a>
             </div>
           </ScrollReveal>
 
-          {/* Contact Info */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-            <ScrollReveal>
-              <div className="bg-[#0A1A2F] text-white rounded-2xl p-6 flex items-center gap-4 border border-slate-800">
-                <span className="text-2xl">📞</span>
-                <div>
-                  <p className="text-white/60 text-xs font-semibold">대표 전화</p>
-                  <p className="font-extrabold text-lg mt-0.5">{location.tel}</p>
-                </div>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={100}>
-              <div className="bg-[#0A1A2F] text-white rounded-2xl p-6 flex items-center gap-4 border border-slate-800">
-                <span className="text-2xl">📠</span>
-                <div>
-                  <p className="text-white/60 text-xs font-semibold">팩스</p>
-                  <p className="font-extrabold text-lg mt-0.5">{location.fax}</p>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
+          {/* 3. Detailed Transportation Info Section */}
+          <ScrollReveal>
+            <div className="bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-12 shadow-sm">
+              <h3 className="text-xl font-extrabold text-[#0A1A2F] mb-8 pb-4 border-b border-slate-200 flex items-center gap-2">
+                🏢 상세 교통 및 주차 안내
+              </h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                
+                {/* Left Side: Address & Parking */}
+                <div className="space-y-8">
+                  {/* Address Card */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#2B4C8C]/5 rounded-2xl flex items-center justify-center text-xl text-[#2B4C8C] flex-shrink-0">
+                      📍
+                    </div>
+                    <div>
+                      <h4 className="font-extrabold text-[#0A1A2F] text-base mb-1.5">본사 주소</h4>
+                      <p className="text-slate-600 text-sm font-semibold leading-relaxed">
+                        {location.address}
+                      </p>
+                      <div className="flex gap-4 mt-2 text-xs text-slate-500 font-medium">
+                        <span>대표전화: {location.tel}</span>
+                        <span>팩스: {location.fax}</span>
+                      </div>
+                    </div>
+                  </div>
 
-          {/* Info Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {infoCards.map((card, i) => (
-              <ScrollReveal key={i} delay={i * 100}>
-                <div className="bg-[#F8FAFC] rounded-2xl p-6 flex items-start gap-4 hover:shadow-md transition-shadow border border-slate-100">
-                  <span className="text-3xl flex-shrink-0">{card.icon}</span>
-                  <div>
-                    <h3 className="font-bold text-[#0A1A2F] mb-1">{card.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{card.value}</p>
+                  {/* Parking Card */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#2B4C8C]/5 rounded-2xl flex items-center justify-center text-xl text-[#2B4C8C] flex-shrink-0">
+                      🅿️
+                    </div>
+                    <div>
+                      <h4 className="font-extrabold text-[#0A1A2F] text-base mb-1.5">주차 안내</h4>
+                      <p className="text-slate-600 text-sm font-semibold leading-relaxed">
+                        {location.parking}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+
+                {/* Right Side: Public Transit (Subway & Bus) */}
+                <div className="space-y-8">
+                  {/* Subway Card */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#2B4C8C]/5 rounded-2xl flex items-center justify-center text-xl text-[#2B4C8C] flex-shrink-0">
+                      🚇
+                    </div>
+                    <div>
+                      <h4 className="font-extrabold text-[#0A1A2F] text-base mb-1.5">지하철로 오시는 길</h4>
+                      <p className="text-slate-600 text-sm font-semibold leading-relaxed">
+                        {location.subway}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Bus Card */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#2B4C8C]/5 rounded-2xl flex items-center justify-center text-xl text-[#2B4C8C] flex-shrink-0">
+                      🚌
+                    </div>
+                    <div>
+                      <h4 className="font-extrabold text-[#0A1A2F] text-base mb-1.5">버스로 오시는 길</h4>
+                      <p className="text-slate-600 text-sm font-semibold leading-relaxed">
+                        {location.bus}
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </ScrollReveal>
+
         </div>
       </section>
     </>

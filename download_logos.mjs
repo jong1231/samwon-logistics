@@ -3,7 +3,7 @@ import path from 'path';
 import https from 'https';
 import http from 'http';
 
-const destDir = "C:/Users/samwon17_1/.gemini/antigravity/scratch/samwon-logistics/src/assets/partners";
+const destDir = "C:/Users/jong1/.gemini/antigravity/scratch/logistics-website/src/assets/partners";
 
 if (!fs.existsSync(destDir)) {
   fs.mkdirSync(destDir, { recursive: true });
@@ -94,7 +94,7 @@ const partners = {
   ]
 };
 
-const userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
+const userAgent = "SamwonLogisticsWebsite/1.0 (info@3won.kr) Node.js/18.0";
 
 const httpsAgent = new https.Agent({
   rejectUnauthorized: false

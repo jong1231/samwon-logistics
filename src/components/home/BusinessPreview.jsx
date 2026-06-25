@@ -19,7 +19,7 @@ export default function BusinessPreview() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {content.businessAreas.map((area, i) => (
-            <ScrollReveal key={area.id} delay={i * 150}>
+            <ScrollReveal key={area.id} delay={i * 150} className={i === 4 ? 'md:col-span-2' : ''}>
               <Link
                 to={area.link}
                 className="group relative block h-72 md:h-80 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500"

@@ -31,7 +31,35 @@ function deepMerge(defaults, saved) {
 export function ContentProvider({ children }) {
   const [content, setContent] = useState(() => {
     const saved = loadContent()
-    return saved ? deepMerge(defaultContent, saved) : { ...defaultContent }
+    const merged = saved ? deepMerge(defaultContent, saved) : { ...defaultContent }
+    
+    // Auto-migrate statistics from 350 to 1000 if stored in local storage
+    let migrated = false
+    if (merged.statistics && merged.statistics[3] && merged.statistics[3].number === 350) {
+      merged.statistics[3].number = 1000
+      migrated = true
+    }
+
+    // Auto-migrate parking information to the new mechanical parking text if stored as the old text
+    if (merged.location && (merged.location.parking === '건물 주차장 이용 가능 (방문 시 무료 주차 도장 발급)' || !merged.location.parking)) {
+      merged.location.parking = '건물 기계식 주차장 이용 가능(방문 시 무료주차 도장 발급)'
+      migrated = true
+    }
+    
+    // Migrate businessPage images to local high-res generated images if they are Unsplash placeholders
+    const businessKeys = ['corporate', 'distribution', 'brokerage', 'warehouse']
+    businessKeys.forEach(key => {
+      if (merged.businessPages && merged.businessPages[key] && merged.businessPages[key].image && typeof merged.businessPages[key].image === 'string' && merged.businessPages[key].image.includes('unsplash.com')) {
+        merged.businessPages[key].image = defaultContent.businessPages[key].image
+        migrated = true
+      }
+    })
+    
+    if (migrated) {
+      saveContent(merged)
+    }
+    
+    return merged
   })
 
   const updateContent = useCallback((newContent) => {

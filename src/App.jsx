@@ -5,10 +5,12 @@ import Intro from './pages/company/Intro'
 import History from './pages/company/History'
 import Status from './pages/company/Status'
 import Location from './pages/company/Location'
+import BusinessIntro from './pages/business/BusinessIntro'
 import Corporate from './pages/business/Corporate'
 import Distribution from './pages/business/Distribution'
 import Brokerage from './pages/business/Brokerage'
 import Warehouse from './pages/business/Warehouse'
+import Consulting from './pages/business/Consulting'
 import Talent from './pages/recruitment/Talent'
 import DriverJobs from './pages/recruitment/DriverJobs'
 import Contact from './pages/Contact'
@@ -29,10 +31,12 @@ export default function App() {
         <Route path="/company/location" element={<Location />} />
 
         {/* 사업영역 */}
+        <Route path="/business" element={<BusinessIntro />} />
         <Route path="/business/corporate" element={<Corporate />} />
         <Route path="/business/distribution" element={<Distribution />} />
         <Route path="/business/brokerage" element={<Brokerage />} />
         <Route path="/business/warehouse" element={<Warehouse />} />
+        <Route path="/business/consulting" element={<Consulting />} />
 
         {/* 채용정보 */}
         <Route path="/recruitment/talent" element={<Talent />} />

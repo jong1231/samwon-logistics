@@ -1,0 +1,1020 @@
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>크레텍</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0 ,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi" />-->
+<meta http-equiv="imagetoolbar" content="no" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="expries" content="0" />
+<meta name="format-detection" content="telephone=no" />
+
+<script type="text/javascript" src="../js/menu.js?v=1.001"></script>
+<script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/js/ui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="/js/ui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="/js/ui/jquery.ui.mouse.js"></script>
+<script type="text/javascript" src="/js/jquery_chkform.js"></script>
+<script type="text/javascript" src="/js/chkscript.js"></script>
+<script type="text/javascript" src="../js/jquery_newMain.js"></script>
+<script type="text/javascript" src="../js/jsbn/jsbn.js"></script>
+<script type="text/javascript" src="../js/jsbn/rsa.js"></script>
+<script type="text/javascript" src="../js/jsbn/prng4.js"></script>
+<script type="text/javascript" src="../js/jsbn/rng.js"></script>
+<!--<script type="text/javascript" src="/shop/data/images/js/superslide.2.1.js"></script>-->
+<script src="https://ebook.cretec.kr/cretec/flowplayerflv/flowplayer-3.2.13.min.js"></script> 
+
+<script type="text/javascript" src="../js/superslide.2.1.js"></script>
+<!--[if lt IE 9]>
+<script src="../js/html5shiv.js">
+</script>
+<![endif]-->
+<link rel="stylesheet" href="../css/main.css?v=1.012" />
+<link rel="stylesheet" href="../css/font2.css" />
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-27114835-6', 'auto');
+	  ga('send', 'pageview');
+</script>
+
+<!--  방송송출 용 -->
+<script src="../iptv/js/site.js"></script>
+<script type="text/javascript" src="../iptv/lib/jwplayer/jwplayer.js"></script>
+<script type="text/javascript" src="https://player.wowza.com/player/latest/wowzaplayer.min.js"></script>
+
+<script type="text/javascript">
+	$('document').ready(function () {
+		$(window).scroll(function (e) {
+			if ($(this).scrollTop() >= 165)
+				jQuery("#menuCls").addClass("sub_navi_fixed");
+			else
+				jQuery("#menuCls").removeClass("sub_navi_fixed");
+		});
+	});
+
+function getUserOs(){
+		var  ua = navigator.userAgent;
+		
+	    if(!ua) {
+		 return "NO Info";
+	    }
+	   
+	    if (ua.indexOf("Android") > -1)
+	        return "Android ";
+
+	    if (ua.indexOf("iPad") > -1)
+	        return "iPad OS ";
+
+	    if (ua.indexOf("iPhone") > -1)
+	        return "iPhone OS ";
+
+	    if (ua.indexOf("Linux") > -1)
+	        return "Kindle Fire";
+
+	    if (ua.indexOf("RIM Tablet")  > -1|| (ua.indexOf("BB")  > -1 && ua.indexOf("Mobile"  > -1 )))
+	        return "Black Berry";
+
+	    if (ua.indexOf("Windows Phone") > -1)
+	        return "Windows Phone";
+
+	    if (ua.indexOf("Mac OS") > -1)
+	        return "Mac OS";
+
+	    if (ua.indexOf("Windows NT 5.1") > -1 || ua.indexOf("Windows NT 5.2") > -1)
+	        return "Windows XP";
+
+	    if (ua.indexOf("Windows NT 6.0") > -1)
+	        return "Windows Vista";
+
+	    if (ua.indexOf("Windows NT 6.1") > -1)
+	        return "Windows 7";
+
+	    if (ua.indexOf("Windows NT 6.2") > -1)
+	        return "Windows 8";
+
+	    if (ua.indexOf("Windows NT 6.3") > -1)
+	        return "Windows 8.1";
+
+	    if (ua.indexOf("Windows NT 10") > -1)
+	        return "Windows 10";
+	    
+	    if (ua.indexOf("Windows") > -1)
+	        return "Windows";
+
+	    return ua;	
+	}
+
+	//클릭로그 추가
+	function accessLog(type, url){
+		$.ajaxSetup({global: false});
+		$.ajax({
+	        type : 'POST',
+	        url : '' + '/kor/common/accessLog.jsp',
+	        dataType : 'json',
+	        data : {
+	        	type : type
+	           ,url : url || ''	
+	           ,userOs : getUserOs()
+	        },
+	        success : function(resultObj) {       
+	        }
+	    });
+		$.ajaxSetup({global: true});
+	}
+	
+	accessLog('visit','/kor/main/main.jsp');
+
+	//개인정보 관련 로그 
+	function Loginfo(id, url){
+		$.ajaxSetup({global: false});
+		$.ajax({
+	        id : 'POST',
+	        url : '' + '/kor/common/Loginfo.jsp',
+	        dataType : 'json',
+	        data : {
+	        	id : id
+	           ,url : url || ''	
+	        },
+	        success : function(resultObj) {       
+	        }
+	    });
+		$.ajaxSetup({global: true});
+	}
+	
+</script>
+<script type="text/javascript">
+//마우스오른쪽 클릭방지
+document.getElementsByTagName("html")[0].oncontextmenu = function(){return false;}
+</script>
+
+
+</head>
+  
+<body class="">
+<div id="wrap">
+	<header id="header">
+		<div class="h_wrap">
+			<input type="hidden" id="slidehid" value="up" />
+			<ul class="top_lang">
+				<li><a href="../../eng/main/main.jsp" target="_blank">EN</a></li>
+				<li><a href="../../jp/main/main.jsp" target="_blank">JP</a></li>
+				<li><a href="../../chi/main/main.jsp" target="_blank">CN</a></li>
+			</ul>
+			<ul class="top_link">
+				<li><a href="../main/main.jsp">HOME</a></li>
+				<li><a href="javascript:subLink(61)">SITEMAP</a></li>
+			</ul>
+			<h1><a href="../main/main.jsp" onclick="accessLog('header/h_logo');"><img src="../images/common/logo.gif" alt="cretec"></a></h1>
+		</div>
+		<div class="menu_wrap">
+			<nav class="gnb">
+				<ul>
+					<li class=""><a href="javascript:subLink(11)" onclick="accessLog('header/h_company');">회사소개</a></li>
+					<li class=""><a href="javascript:subLink(21)" onclick="accessLog('header/h_business');">사업소개</a></li>
+					<li class=""><a href="javascript:subLink(51)" onclick="accessLog('header/h_customer');">거래안내</a></li>
+					<li class=""><a href="javascript:subLink(311)" onclick="accessLog('header/h_press');">홍보센터</a></li>
+					<li class=""><a href="javascript:subLink(41)" onclick="accessLog('header/h_recruit');">인재채용</a></li>
+				</ul>
+			</nav>
+			<!-- 전체메뉴 -->
+			<div class="all_menu">
+				<div class="allmenu_cnt" >
+					<div class="allmenu_list allmenu01">
+						<ul>
+							<li><a href="javascript:subLink(11)">CEO인사말</a></li>
+							<li><a href="javascript:subLink(121)">비전/경영철학</a></li>
+							<li><a href="javascript:subLink(13)">크레텍이야기</a></li>
+							<li><a href="javascript:subLink(141)">회사정보</a></li>
+							<li><a href="javascript:subLink(151)">지속가능경영</a></li>
+							<li><a href="javascript:subLink(16)">사업장 안내</a></li>
+						</ul>
+					</div>
+					<div class="allmenu_list allmenu02">
+						<ul>
+							<li><a href="javascript:subLink(21)">사업개요</a></li>
+							<li><a href="javascript:subLink(221)">상품안내</a></li>
+							<li><a href="javascript:subLink(231)">크레텍브랜드</a></li>
+							<li><a href="javascript:subLink(24)">해외현황</a></li>
+							<li><a href="javascript:subLink(251)">핵심역량</a></li>
+						</ul>
+					</div>
+					<div class="allmenu_list allmenu03">
+						<ul>
+							<li><a href="javascript:subLink(51)">고객서비스안내</a></li>
+							<li><a href="javascript:subLink(521)">크레텍에서<br />상품구매</a></li>
+							<li><a href="javascript:subLink(53)">크레텍에<br />상품공급</a></li>
+							<li><a href="javascript:subLink(54)">A/S센터</a></li>
+							<li><a href="javascript:subLink(55)">자주묻는질문</a></li>
+							<li><a href="javascript:subLink(56)">의견게시판</a></li>
+							<li><a href="javascript:subLink(65)">MSDS 자료실</a></li>							
+						</ul>
+					</div>
+					<div class="allmenu_list allmenu04">
+						<ul>
+							<li><a href="javascript:subLink(311)">뉴스룸</a></li>
+							<li><a href="javascript:subLink(321)">PR자료실</a></li>
+							<li><a href="javascript:subLink(33)">월간TOOL</a></li>
+						</ul>
+					</div>
+					<div class="allmenu_list allmenu05">
+						<ul>
+							<li><a href="javascript:subLink(41)">인재상</a></li>
+							<li><a href="javascript:subLink(42)">인사제도</a></li>
+							<li><a href="javascript:subLink(43)">HR운영전략</a></li>
+							<li><a href="javascript:subLink(441)">직무소개</a></li>
+							<li><a href="javascript:subLink(461)">채용정보</a></li>
+							<li><a href="javascript:subLink(462)">채용공고</a></li>
+							<li><a href="javascript:subLink(481)">채용 Q&A</a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</header>
+
+<script type="text/javascript">
+var didScroll; 
+var lastScrollTop = 0;
+var delta = 5;
+var navbarHeight = $('header').outerHeight(); 
+
+$(window).scroll(function(event){ didScroll = true; }); 
+setInterval(function() { if (didScroll) { hasScrolled(); didScroll = false; } }, 250); 
+
+function hasScrolled() { var st = $(this).scrollTop(); // Make sure they scroll more than delta 
+if(Math.abs(lastScrollTop - st) <= delta) return; // If they scrolled down and are past the navbar, add class .nav-up. // This is necessary so you never see what is "behind" the navbar.
+if (st > lastScrollTop && st > navbarHeight){ // Scroll Down 
+	$('header').removeClass('nav-down').addClass('nav-up'); }
+	else { // Scroll Up 
+		if(st + $(window).height() < $(document).height()) { $('header').removeClass('nav-up').addClass('nav-down'); } } lastScrollTop = st; }
+</script>
+
+		
+
+
+
+
+
+
+<script type="text/javascript" src="../js/jquery.newbanner.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script> 
+
+<script type="text/javascript" language="JavaScript">
+
+function getCookieMobile(name){
+	var from_idx = document.cookie.indexOf(name+'=');
+	if (from_idx != -1){ 
+		from_idx += name.length + 1
+		to_idx = document.cookie.indexOf(';', from_idx)
+		if (to_idx == -1){
+			to_idx = document.cookie.length
+		}
+		return unescape(document.cookie.substring(from_idx, to_idx))
+	}
+}
+
+
+if(location.href.indexOf("?mobile") != -1){
+	document.cookie = " IsMobile=" + escape( "Y" ) + "; path=/;";
+}
+else{
+	//if(!getCookieMobile("IsMobile") ){
+		var mobileKeyWords = new Array('iPhone', 'iPod', 'BlackBerry', 'Android', 'Windows CE', 'Windows CE;', 'LG', 'MOT', 'SAMSUNG', 'SonyEricsson', 'Mobile', 'Symbian', 'Opera Mobi', 'Opera Mini', 'IEmobile');
+		for (var word in mobileKeyWords){
+			if (navigator.userAgent.match(mobileKeyWords[word]) != null){
+				window.location.href = "/mobile/main/main.jsp";
+				break;
+			}
+		}
+	//}
+}
+
+function getCookie(Name) {
+	var search = Name + "="
+	//alert("ggg");
+	//alert(document.cookie.length);
+	if (document.cookie.length > 0) { // 쿠키가 설정되어 있다면
+		offset = document.cookie.indexOf(search)
+		if (offset != -1) { 
+			offset += search.length
+			end = document.cookie.indexOf(";", offset)
+  
+			if (end == -1)
+				end = document.cookie.length
+				return unescape(document.cookie.substring(offset, end))
+		}
+	}
+	return "";
+}
+
+
+
+
+if(getCookie("popup_recruit2") != "1" && 1 == 1) {
+	window.open('/amm/recruit.htm?20260619_2', '채용공고', 'toolbar=no, width=695,height=235,top=0,left=0,status=yes,menubar=no,scrollbars=no');
+}
+if(getCookie("popup_recruit1") != "1") {
+	//window.open('/amm/recruit1.htm?20200910', '채용공고', 'toolbar=no, width=715,height=423,top=0,left=695,status=yes,menubar=no,scrollbars=no');
+}
+if(getCookie("popup1") != "1") {
+        //window.open('/amm/popup1.htm', 'popup1', 'toolbar=no, width=390,height=415,top=0,left=617,status=yes,menubar=no,scrollbars=no');
+}
+if(getCookie("popup2") != "1") {
+        //window.open('/amm/popup2.htm', 'popup2', 'toolbar=no, width=370,height=410,top=0,left=1025,status=yes,menubar=no,scrollbars=no');
+}
+</script>
+
+	<div class="slider">
+		<div class="bd">
+			<!--
+			<div style="overflow:hidden; position:relative; width:3300px;">
+				<ul>
+					<li style="display:inline-block;float:left;width:1100px;"><img src="../images/main/m01.jpg" border="0" /></li>
+					<li style="display:inline-block;float:left;width:1100px;"><img src="../images/main/m02.jpg" border="0" /></li>
+					<li style="display:inline-block;float:left;width:1100px;"><img src="../images/main/m03.jpg" border="0" /></li>
+				</ul>
+			</div>
+			-->
+		
+			<div class="tempWrap" style="width:3300px; overflow:hidden; position:relative;">
+				<ul id="ul_slider" style="margin:0px; padding:0px; left:-1100px; width: 7700px; overflow: hidden; position: relative;">
+					<li style="width:1100px; float:left;" class="clone" ><img src="../images/main/m02_2211.jpg" border="0" alt="Growing Together 13만여 정보를 담은 공구 대백과사전 한국산업공구보감 고객사와 소통하며 고객사와 함께 성장하는 기업, 좋은상품, 바른가격으로 공구의 자부심을 지켜갑니다."></li>
+					<li style="width:1100px; float:left;"><img src="../images/main/m03.jpg" border="0" alt="CREative TEChnology 산업공구의 가치를 높이는 기업, 크레텍이 대한민국 공구발전을 책임지겠습니다. 세계가 주목하는 글로벌 리딩기업 크레텍"></li>
+					<li style="width:1100px; float:left;"><img src="../images/main/m01_250917.jpg" border="0" alt="Great Challenge of Tool Industry 대한민국 산업공구의 중심 크레텍 서울 물류센터  끊임없는 도전과 놀라운 혁신으로 공구유통의 새로운 길을 열어갑니다"></li>
+					<li style="width:1100px; float:left;"><img src="../images/main/m02_250210.jpg" border="0"></li>
+					<li style="width:1100px; float:left;" class="clone"><img src="../images/main/m03.jpg" border="0" alt="CREative TEChnology 산업공구의 가치를 높이는 기업, 크레텍이 대한민국 공구발전을 책임지겠습니다. 세계가 주목하는 글로벌 리딩기업 크레텍"></li>
+					<li style="width:1100px; float:left;" class="clone"><img src="../images/main/m01_250917.jpg" border="0" alt="Great Challenge of Tool Industry 대한민국 산업공구의 중심 크레텍 서울 물류센터  끊임없는 도전과 놀라운 혁신으로 공구유통의 새로운 길을 열어갑니다"></li>
+					<li style="width:1100px; float:left;" class="clone"><img src="../images/main/m02_250210.jpg" border="0" alt="Growing Together 13만여 정보를 담은 공구 대백과사전 한국산업공구보감 고객사와 소통하며 고객사와 함께 성장하는 기업, 좋은상품, 바른가격으로 공구의 자부심을 지켜갑니다."></li>
+				</ul>
+			</div>  
+					
+		</div>
+		<div class="pnBtn prev"> <span class="blackBg"></span> <a class="arrow" style="display:inline;" onclick="slideBefore(1);"></a> </div>
+		<div class="pnBtn next"> <span class="blackBg"></span> <a class="arrow" style="display:inline;" onclick="slideBefore(-1);"></a> </div>
+		 <div style="height:20px; position:relative; top:400px;">
+				<ul style="height:20px;">
+					<li style="display:inline-block; cursor:pointer; "><img id="btn_roll_on1" src="../images/main/btn_roll_on.png" border="0" onclick="slideClick(1);"/></li>
+					<li style="display:inline-block;margin-left:10px; cursor:pointer; "><img id="btn_roll_on2" src="../images/main/btn_roll_off.png" border="0" onclick="slideClick(2);"/></li>
+					<li style="display:inline-block;margin-left:10px; cursor:pointer; "><img id="btn_roll_on3" src="../images/main/btn_roll_off.png" border="0" onclick="slideClick(3);"/></li>
+				</ul>			
+			</div>
+         
+	</div>
+
+<script type="text/javascript">
+  
+	var from = -1100; 
+	var to = 0;
+    var isMove = false;
+	var left = 1;
+	var right = -1;
+
+    //땡땡이 클릭 
+	function slideClick(n){
+		if(isMove) return;
+		isMove = true;
+		if(n == 1){
+			to = -1100;
+			var obj = document.getElementById("ul_slider");
+			slide(obj, 1);			
+		}else if(n == 2){
+			var left_or_right = right;
+			to = -2200;
+			if(from < -2200){
+				left_or_right = left;
+			}
+			var obj = document.getElementById("ul_slider");
+			slide(obj, left_or_right);			
+		}else if(n == 3){
+			to = -3300;
+			var obj = document.getElementById("ul_slider");			
+			slide(obj, right);		
+		}
+
+		
+	}
+    //좌우측으로 슬라이드
+	function slideBefore(n){
+		if(isMove) return;
+		isMove = true;
+		to = from + n * 1100;
+		
+        //범위가 넘어 갈 경우 값 초기화
+		if(from >= 0 && from < 1100){
+			from = -3300;
+			to = from + 1100;
+		}else if(to <= -4400 && to >= -5500){
+			from = 0;	
+			to = from - 1100;
+		}
+		
+		var obj = document.getElementById("ul_slider");
+		slide(obj, n);
+	}	
+
+	//실제 슬라이드 처리
+	function slide(obj, n){	 
+	
+      if(from >= to && n == left){ 		 
+		 //땡땡이 on/off
+		 if(Math.abs((to/1100)%3) == 1){
+			document.getElementById("btn_roll_on1").src = "../images/main/btn_roll_on.png";
+			document.getElementById("btn_roll_on2").src = "../images/main/btn_roll_off.png";
+			document.getElementById("btn_roll_on3").src = "../images/main/btn_roll_off.png";
+		 }else if(Math.abs((to/1100)%3) == 2){
+			document.getElementById("btn_roll_on1").src = "../images/main/btn_roll_off.png";
+			document.getElementById("btn_roll_on2").src = "../images/main/btn_roll_on.png";
+			document.getElementById("btn_roll_on3").src = "../images/main/btn_roll_off.png";
+		 }else{
+			document.getElementById("btn_roll_on1").src = "../images/main/btn_roll_off.png";
+			document.getElementById("btn_roll_on2").src = "../images/main/btn_roll_off.png";
+			document.getElementById("btn_roll_on3").src = "../images/main/btn_roll_on.png";
+		 }
+		 isMove = false;
+         return;  
+	  }
+	  else if(from <= to && n == right){	
+		 //땡땡이 on/off 
+		 if(Math.abs((to/1100)%3) == 1){
+			document.getElementById("btn_roll_on1").src = "../images/main/btn_roll_on.png";
+			document.getElementById("btn_roll_on2").src = "../images/main/btn_roll_off.png";
+			document.getElementById("btn_roll_on3").src = "../images/main/btn_roll_off.png";
+		 }else if(Math.abs((to/1100)%3) == 2){
+			document.getElementById("btn_roll_on1").src = "../images/main/btn_roll_off.png";
+			document.getElementById("btn_roll_on2").src = "../images/main/btn_roll_on.png";
+			document.getElementById("btn_roll_on3").src = "../images/main/btn_roll_off.png";
+		 }else{
+			document.getElementById("btn_roll_on1").src = "../images/main/btn_roll_off.png";
+			document.getElementById("btn_roll_on2").src = "../images/main/btn_roll_off.png";
+			document.getElementById("btn_roll_on3").src = "../images/main/btn_roll_on.png";
+		 }
+		 isMove = false;
+		 return;
+	  }
+	  else {
+		  
+		   from = from + (n * 100);
+		   obj.style.left = from + "px";
+		   setTimeout(function(){
+			   slide(obj, n);
+		   }, 30) 
+	   }
+   
+	}	
+
+
+	setInterval(function(){
+			slideBefore(-1);
+		},5000
+	);
+
+    /*
+	setInterval(function(){
+  		 var obj = document.getElementById("ul_slider");
+
+		 if(obj.style.left > 5500){
+			obj.style.left = 5500;
+		 } else if(obj.style.left < 5500 && obj.style.left > 4400){
+			obj.style.left = 4400;
+		 } else if(obj.style.left < 4400 && obj.style.left > 3300){
+			obj.style.left = 3300;
+		 } else if(obj.style.left < 3300 && obj.style.left > 2200){
+			obj.style.left = 2200;
+		 } else if(obj.style.left < 2200 && obj.style.left > 1100){
+			obj.style.left = 1100;
+		 } else if(obj.style.left < 1100 && obj.style.left > 0){
+			obj.style.left = 1100;
+		 } else if(obj.style.left < 0 && obj.style.left > -1100){
+			obj.style.left = -1100;
+		 } else if(obj.style.left < -1100 && obj.style.left > -2200){
+			obj.style.left = -2200;
+		 } else if(obj.style.left < -2200 && obj.style.left > -3300){
+			obj.style.left = -3300;
+		 } else if(obj.style.left < -3300 && obj.style.left > -4400){
+			obj.style.left = -4400;
+		 }
+		},1000
+	);
+   */
+
+	/*
+	jQuery(".slider .bd li").first().before( jQuery(".slider .bd li").last() );
+	jQuery(".slider").hover(function(){
+		 jQuery(this).find(".arrow").stop(true,true).fadeIn(300) 
+		 },function(){ 
+			jQuery(this).find(".arrow").fadeOut(300) });				
+		 jQuery(".slider").slide(
+			{ titCell:".hd ul", mainCell:".bd ul", effect:"leftLoop",autoPlay:true, vis:3,autoPage:true, trigger:"click"}
+		);
+     */
+		/* 가격표 링크 */
+		function ebook() {
+			
+			/*
+			var ver = getInternetExplorerVersion(); // 익스 플로러 버전 가져오기
+			var versionCheck;
+			
+			if(ver > -1){
+    			versionCheck = "Explorer" + ver;
+			}else{
+				versionCheck = "";
+			}
+
+			var bieookscr = screen.width;  
+			var biebook_height = screen.height;
+
+			if (bieookscr > 1279 && biebook_height > 1023){
+				ebookPopup = window.open("http://ctx.cretec.kr/nctx/ebook/index.do?Mode=1280&versionCheck=" + versionCheck,"edbook1280","width=100%,height=100%,top=0,left=0,scrollbars=no,status=no,menubar=no,toolbar=no,location=no");
+			} else {
+				ebookPopup = window.open("http://ctx.cretec.kr/nctx/ebook/index.do?versionCheck=" + versionCheck,"edbook1024","width=100%,height=100%,top=0,left=0,scrollbars=no,status=no,menubar=no,toolbar=no,location=no");
+			}
+			*/
+			 var win = window.open('http://ctx.cretec.kr/CtxApp/ebook/index.do',"edbook1280","width="+screen.width+",height="+screen.height+",top=0,left=0,scrollbars=yes,resizable=yes");
+			 win.focus();
+		}
+
+		/* 익스플로러 버전 체크 */
+		function getInternetExplorerVersion() {
+
+			var rv = -1;
+			if (navigator.appName == 'Microsoft Internet Explorer') {
+				var ua = navigator.userAgent;
+				var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+
+				if (re.exec(ua) != null)
+					rv = parseFloat(RegExp.$1);
+				}
+			return rv;
+		}
+
+
+        /*
+		addLoadEvent(function() {
+			movLayer(document.getElementById('skyscraper'), 185, 80, 120);
+		});
+		*/
+
+</script>
+
+	<div id="main_quick">
+	<!-- 
+		<div class="toolpark">
+			<img src="../images/main/ctxerp_mv.jpg" usemap="#001">
+		</div>
+	 -->	
+		<div class="exh_cnt">
+			<p class="exh_tit">크레텍 전시관</p>
+			<div class="exh_box">
+				<ul>
+					<li><a href="https://toolexco.cretec.kr" target="_blank">메타버스</a></li>
+					<li><a href="https://my.matterport.com/show/?m=P2vn7WDw5eh" target="_blank">세신버팔로<br />홍보관</a></li>
+					<li><a href="https://exhi.daara.co.kr/c/ko57123?" target="_blank">온라인부스</a></li>
+					<li><a href="../images/press/guidebook_2026.pdf" target="_blank">가이드북</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<main id="main_wrap">
+		<div class="mcontainer">
+			<section class="product_info">
+				<div class="p_title_cnt">
+					<p>상품소개<span>14만여 품목 / 9개 카테고리</span></p>
+					<ul class="p_bt">
+						<li><a id="a_left_bt" href="javascript:plusSlides(-1)"><img src="../images/main/p_left_bt.gif" alt="cretec"></a></li>
+						<li class="li_right_bt"><a id="a_right_bt" href="javascript:plusSlides(1)"><img src="../images/main/p_right_bt.gif" alt="cretec"></a></li>
+					</ul>
+				</div>
+				<div class="p_cnt">
+					<ul>
+						<li id="slide_first" class="slide">
+							<a href="javascript:subLink(221)"><img src="../images/main/product_info01.jpg" alt="작업공구 Ⅰ">작업공구 Ⅰ</a>
+						</li>
+						<li class="slide">
+							<a href="javascript:subLink(222)"><img src="../images/main/product_info02.jpg" alt="작업공구 Ⅱ">작업공구 Ⅱ</a>
+						</li>
+						<li class="slide">
+							<a href="javascript:subLink(223)"><img src="../images/main/product_info03.jpg" alt="절삭&middot;금형&middot;공작">절삭, 금형, 공작</a>
+						</li>
+						<li class="slide">
+							<a href="javascript:subLink(224)"><img src="../images/main/product_info04.jpg" alt="측정&middot;측량&middot;계측">측정, 측량, 계측</a>
+						</li>
+						<li class="slide">
+							<a href="javascript:subLink(225)"><img src="../images/main/product_info05.jpg" alt="전동&middot;다몬&middot;엔진&middot;하역">전동, 다몬, 엔진, 하역</a>
+						</li>
+						<li class="slide">
+							<a href="javascript:subLink(226)"><img src="../images/main/product_info06.jpg" alt="에어&middot;컴프레서&middot;유압">에어, 콤프레샤, 유압</a>
+						</li>
+						<li class="slide">
+							<a href="javascript:subLink(227)"><img src="../images/main/product_info07.jpg" alt="용접기자재">용접기자재</a>
+						</li>
+						<li class="slide">
+							<a href="javascript:subLink(228)"><img src="../images/main/product_info08.jpg" alt="안전용품">안전용품</a>
+						</li>
+						<li id="slide_last" class="slide">
+							<a href="javascript:subLink(229)"><img src="../images/main/product_info09.jpg" alt="산업용품">산업용품</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section class="m_ctx">
+				<a href="javascript:subLink(251)">
+					<h4>CTX</h4>
+					<p>크레텍 온라인 주문시스템</p>
+				</a>
+			</section>
+
+
+			<section class="m_story">
+				<a href="javascript:subLink(13)">
+					<h4><span>크레텍</span>이야기</h4>
+					<p>크레텍은 한 대의 자전거로<br />시작해 대한민국 공구유통<br />혁신의 아이콘이 되었습니다</p>
+				</a>
+			</section>			
+<!--
+			<section class="m_player">
+				<h4>크레텍 인터넷 방송 </h4>
+				<p>영상으로 보는 생생한 크레텍 &nbsp;&nbsp;<span onClick="javascript:goDetail('테스트');">크게보기</span></p>
+				<div class="m_player_cnt">
+					<div class="m_player_movie" id="player1"></div>
+				</div>
+			    <div id="mask"></div>		
+			     <div id="layerbox" class="layerpop">
+			        <article class="layerpop_area">
+				        <a href="javascript:popupClose();" class="layerpop_close" id="layerbox_close"></a> <br>
+				        <div class="content">
+			 				<div class="m_player_cnt_layer">
+								<div class="m_player_movie_layer" id="player2">
+								</div>
+							</div>	
+				        </div>
+			        </article>
+			    </div>
+			</section>
+			
+			<script type="text/javascript">
+				var  ua = navigator.userAgent;
+				
+				if (ua.indexOf("Windows NT 6.1") > -1)
+		        {
+				   $('.m_player').hide();
+		        }
+				else {
+					$('.m_story').hide();
+		        }
+				
+			</script>
+-->
+<!--
+			<section class="m_story">
+				<a href="javascript:subLink(13)">
+					<h4><span>크레텍</span>이야기</h4>
+					<p>크레텍은 한 대의 자전거로<br />시작해 대한민국 공구유통<br />혁신의 아이콘이 되었습니다</p>
+				</a>
+			</section>
+-->
+			<!--
+			<section class="m_talent">
+				<a href="javascript:subLink(41)">
+					<h4>인재상</h4>
+					<p>고객을 위한 가치 창조인<br />크레텍형 인재를 만나보세요</p>
+				</a>
+			</section>-->
+			<section class="m_deal">
+				<h4>거래안내</h4>
+				<span class="dealbt01"><a href="javascript:subLink(521)">크레텍에서 상품구매</a></span>
+				<span class="dealbt02"><a href="javascript:subLink(53)">크레텍에 상품공급</a></span>
+			</section>
+			<section class="m_pb">
+				<a href="javascript:subLink(231)">
+					<h4><span>크레텍</span>브랜드</h4>
+					<p>고객 맞춤형 서비스 제공을 위해<br />크레텍 브랜드 공급</p>
+					<img src="../images/main/m_cnt04.jpg" alt="cretec">
+				</a>
+			</section>
+			<!--  핵심역량 삭제 
+			<section class="m_ability">
+				<a href="javascript:subLink(251)">
+					<h4><span>핵심</span>역량</h4>
+					<p>크레텍만의 핵심 경쟁력</p>
+				</a>
+			</section>
+		    -->
+			<section class="m_ebiz">
+				<h4><span>온라인판매</span> 솔루션</h4>
+				<div class="ebiz_box">
+					<div class="ebiz_img"><a href="https://youtu.be/vLZzdPmtCcw?si=J6xTiBACI2Ewahdy" target="_blank"><img src="../images/main/toolon_mv.jpg"></a></div>
+					<p class="ebiz_txt">쇼핑몰, 오픈마켓 통합관리</p>									
+				</div>			
+			</section>
+			
+			<section class="m_link">
+				<div class="m_movie">
+					<a href="javascript:subLink(321)"><h4>홍보영상</h4></a>
+				</div>
+				<div class="m_cs">
+					<h4>고객센터<br />1588-0949 </h4>
+				</div>
+			</section>
+			<div class="bt_cnt">
+				<section class ="m_recruit">
+					<h4><span>채용</span>공고</h4>
+					<p>대한민국 1등 산업공구 전문기업<br />크레텍과 함께 꿈을 펼쳐보세요</p>
+					<a href="javascript:subLink(462)">지원하러 가기</a>
+				</section>
+				
+				<section class ="m_news">
+					<h4><span>뉴스</span>룸</h4>
+					<div class="news_box">						
+												
+							<div class="news_line mb20">
+								<div class="news_img">
+									
+									<a href="/kor/press/news_view.jsp?bid=9&pg=1&num=19397"><img width="95" height="60" src="/upload/webimage/202606/20260611LMQ4MGZ8P2.jpg" alt="뉴스사진"></a>
+									
+									</div>
+								<div class="news_cnt">
+									<p class="news_title"><a href="/kor/press/news_view.jsp?bid=9&pg=1&num=19397">크레텍, 경북대학교 시험기간 바나나 나눔 이벤트</a></p>	
+									<p class="news_txt"><a href="/kor/press/news_view.jsp?bid=9&pg=1&num=19397">
+&quot;공지 뜨자 5분 만에 동났다&quot;&hellip;
+
+
+경북대 도서</a></p>
+								</div>
+							</div>
+														
+							<div class="news_line ">
+								<div class="news_img">
+									
+									<a href="/kor/press/news_view.jsp?bid=9&pg=1&num=19203"><img width="95" height="60" src="/upload/webimage/202604/20260427KX28QWLW5S.jpg" alt="뉴스사진"></a>
+									
+									</div>
+								<div class="news_cnt">
+									<p class="news_title"><a href="/kor/press/news_view.jsp?bid=9&pg=1&num=19203">크레텍 최영수 회장 해군 정비창 MOU, 명예 UDT 위촉</a></p>	
+									<p class="news_txt"><a href="/kor/press/news_view.jsp?bid=9&pg=1&num=19203">&nbsp;
+
+해군특전단, 최영수 크레텍 회장에&nbsp;
+
+명예 UDT 대원 위</a></p>
+								</div>
+							</div>
+												
+					</div>
+					
+					<div class="news_more_bt"><a href="javascript:subLink(311)"><img src="../images/main/news_more_bt.gif" alt="더보기"></a></div>
+				</section>
+			</div>
+			<div class="quick_menu">
+				<ul>
+					<li class="q_location"><a href="javascript:subLink(16)">사업장안내</a></li>
+					<li class="q_ebook"><a href="javascript:ebook();">가격표<br />보기</a></li>
+					<li class="q_network"><a href="javascript:subLink(523)">영업<br />네트워크</a></li>
+					<li class="q_global"><a href="javascript:subLink(24)">글로벌현황</a></li>
+					<li class="q_tool"><a href="javascript:subLink(33)">공구월간지<br />보기</a></li>
+					<li class="q_utb"><a href="https://www.youtube.com/channel/UCOVmZalA2z26GVHk7NEBIbg" target="_blank">크레텍 유튜브</a></li>
+				</ul>
+			</div>
+		</div>
+	</main>
+
+<script>
+		var slideIndex = 1;
+		showSlides(slideIndex);
+		// Next/previous controls
+		function plusSlides(n) {			  
+		  showSlides(slideIndex += n);		  
+		}
+		
+		//슬라이드 처리 
+		function showSlides(n) {
+			  
+			  var i;
+			  var slides = document.getElementsByClassName("slide");
+			 
+			  if (n > slides.length - 1) {slideIndex = 1} 
+			  if (n < 1) {slideIndex = slides.length - 1}
+			  for (i = 0; i < slides.length; i++) {
+				  slides[i].style.display = "none"; 
+			  }			 
+			  //해당 페이지 보이도록 함
+			  slides[slideIndex-1].style.display = "block";
+			  slides[slideIndex].style.display = "block";
+			  
+			  
+			  //좌측 버튼 off
+			  /*
+			  if(slides[slideIndex-1].id == "slide_first"){
+				 document.getElementById("a_left_bt").style.display="none";
+				 document.getElementById("a_left_bt").style.marginRight="0px";
+				 document.getElementById("a_right_bt").style.display="block";
+				 document.getElementsByClassName("li_right_bt")[0].style.cssFloat="right";				 
+				 //document.getElementById("img_left_bt").src="" ;
+				 //document.getElementById("img_right_bt").src="../images/main/p_right_bt.gif" ;
+			  //우축버튼 off
+			  }else if(slides[slideIndex].id == "slide_last"){
+				 document.getElementById("a_left_bt").style.display="block";
+				 document.getElementById("a_left_bt").style.marginRight="28px";
+				 document.getElementById("a_right_bt").style.display="none";
+				 document.getElementsByClassName("li_right_bt")[0].style.cssFloat="left";
+			  //양측버튼 on
+			  }else{
+				 document.getElementById("a_left_bt").style.display="block";
+ 				 document.getElementById("a_left_bt").style.marginRight="0px";
+				 document.getElementById("a_right_bt").style.display="block";
+				 document.getElementsByClassName("li_right_bt")[0].style.cssFloat="left";
+			  }
+			  */
+			}
+	</script>
+
+
+    <script type="text/javascript">
+
+	jwplayer.key = "D29nDTkyq+YDMD2BDMyXIdbP3lKL/73m//Qe8Q==";
+    $(document).ready(function () {
+    	
+	    var streamingUrl = "http://vod.cretec.kr:1935/live1/TV1.stream/playlist.m3u8";
+        wowza_player("player1", streamingUrl, "", true, true);
+       	wowza_player("player2", streamingUrl, "", true, true); 
+
+    });
+
+    
+    function wrapWindowByMask() {
+        //화면의 높이와 ���비를 구한다.
+        var maskHeight = $(document).height(); 
+        var maskWidth = $(window).width();
+
+        //문서영역의 크기 
+        console.log( "document 사이즈:"+ $(document).width() + "*" + $(document).height()); 
+        //브라우저에서 문서가 보여지는 영역의 크기
+        console.log( "window 사이즈:"+ $(window).width() + "*" + $(window).height());        
+
+        //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
+        $('#mask').css({
+            'width' : maskWidth,
+            'height' : maskHeight
+        });
+
+        //애니메이션 효과
+        //$('#mask').fadeIn(1000);      
+        $('#mask').fadeTo("slow", 0.5);
+    }
+
+    function popupOpen() {
+        $('.layerpop').css("position", "absolute");
+        //영역 가운에데 레이어를 뛰우기 위해 위치 계산 
+        $('.layerpop').css("top",(($(window).height() - $('.layerpop').outerHeight()) / 2) + $(window).scrollTop());
+        $('.layerpop').css("left",(($(window).width() - $('.layerpop').outerWidth()) / 2) + $(window).scrollLeft());
+        $('.layerpop').draggable();
+        $('#layerbox').show();
+    }
+
+    function popupClose() {
+
+/*
+    	if(checkIE()){             
+        	  var streamingUrl = "rtmp://vod.cretec.kr/live1/TV1.stream";	
+               wowza_jwplayer("player1", streamingUrl, "", true, true, "100%", "100%");
+            }else{            
+            	var streamingUrl = "http://vod.cretec.kr:1935/live1/TV1.stream/playlist.m3u8";
+            	wowza_player("player1", streamingUrl, "", false, true);
+            }
+    	
+    	if(checkIE()){             
+      	  var streamingUrl = " ";	
+             wowza_jwplayer("player2", streamingUrl, "", true, false, "100%", "100%");
+          }else{            
+          	var streamingUrl = "http://vod.cretec.kr:1935/live1/TV1.stream/playlist.m3u8";
+          	wowza_player("player2", streamingUrl, "", false, true);
+          }
+*/
+
+        $('#layerbox').hide();
+        $('#mask').hide();
+    }
+
+    function goDetail() {
+
+        /*팝업 오픈전 별도의 작업이 있을경우 구현*/ 
+
+/*
+    	if(checkIE()){             
+      	  var streamingUrl = "rtmp://vod.cretec.kr/live1/TV1.stream";	
+             wowza_jwplayer("player1", streamingUrl, "", true, true, "100%", "100%");
+          }else{            
+          	var streamingUrl = "http://vod.cretec.kr:1935/live1/TV1.stream/playlist.m3u8";
+          	wowza_player("player1", streamingUrl, "", true, true);
+          }
+
+    	if(checkIE()){             
+      	  var streamingUrl = "rtmp://vod.cretec.kr/live1/TV1.stream";	
+             wowza_jwplayer("player2", streamingUrl, "", true, false, "100%", "100%");
+          }else{            
+          	var streamingUrl = "http://vod.cretec.kr:1935/live1/TV1.stream/playlist.m3u8";
+          	wowza_player("player2", streamingUrl, "", true, true);
+          }
+*/
+       popupOpen(); //레이어 팝업창 오픈 
+        wrapWindowByMask(); //화면 마스크 효과 
+    }
+
+    
+    </script>
+
+
+
+
+	<footer id="footer">
+		<div class="f_wrap">
+			<h1><img src="../images/common/bt_udtlogo.png?v=1.001" alt="크레텍로고"></h1>
+			<ul>
+				<li>크레텍책임 : 대구본사 41920 대구시 중구 달성로 100</li>
+				<li>책임/웰딩 : 서울본사 15847 경기도 군포시 당정로 96</li>
+				<li>크레텍웰딩 : 대구본사 41752 대구시 서구 와룡로 97길 12</li>
+			</ul>
+			<p><span>대표전화 : 1588 - 0949</span><br />copyrights(c)2018 CRETEC. all right reserved</p>
+			<div class="link" style="padding-left:10px;">
+				<ul>
+					<li><span><a href="javascript:subLink(64)">개인정보처리방침</a></span></li>
+					<li><a href="javascript:subLink(58)">이메일무단수집거부</a></li>
+				</ul>
+			</div>
+			<div class="family_box">
+	            <a href="javascript:void(0);" class="btn_title" aria-expanded="false">Family site</a>
+	            <div class="drop_box" style="">
+	              <a href="https://www.cretec.kr" target="_blank" title="새창 열림" class="drop_link" >크레텍 홈페이지</a>
+	              <a href="https://ctx.cretec.kr" target="_blank" title="새창 열림" class="drop_link">온라인주문 시스템 CTX</a>
+	              <a href="http://seshinbuffalo.kr" target="_blank" title="새창 열림" class="drop_link">세신버팔로</a>
+	              <a href="https://udtlift.co.kr" target="_blank" title="새창 열림" class="drop_link">UDT리프트</a>
+	              <a href="https://toolmagazine.kr" target="_blank" title="새창 열림" class="drop_link" >월간TOOL</a>
+	              <a href="https://09portal.cretec.kr" target="_blank" title="새창 열림" class="drop_link">공구PORTAL</a>
+	            </div>
+          	</div>
+			<div class="good">
+				<ul>
+					<li><img src="../images/common/goods2.jpg"></li>
+					<li><img src="../images/common/goods3.jpg"></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	
+	
+</div>
+</body>
+</html>
+
+
+ <script>
+    $(function() {
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 100) {
+                $('#back-top').fadeIn();
+            } else {
+                $('#back-top').fadeOut();
+            }
+        });
+        
+        $("#back-top").click(function() {
+            $('html, body').animate({
+                scrollTop : 0
+            }, 400);
+            return false;
+        });
+    });
+    
+    document.addEventListener('DOMContentLoaded', function () {
+    	  const btnTitle = document.querySelector('.family_box .btn_title');
+    	  const dropBox = document.querySelector('.family_box .drop_box');
+
+    	  btnTitle.addEventListener('click', function () {
+    	    const isExpanded = btnTitle.getAttribute('aria-expanded') === 'true';
+    	    btnTitle.setAttribute('aria-expanded', !isExpanded);
+
+    	    if (isExpanded) {
+    	      dropBox.classList.remove('show');
+    	    } else {
+    	      dropBox.classList.add('show');
+    	    }
+    	  });
+    	});
+
+</script>
+
+
+<map name="001">
+ <area shape="rect" coords="0,72,123,188" href="https://youtu.be/hLdKZgNEH1U?si=mXNTOnBLLtlJU0OD" target="_blank">
+ <area shape="rect" coords="0,189,123,304" href="https://youtu.be/lfsnDCkjhnk?si=XhCSJ2ioxc8OUlne" target="_blank">
+ </map>
