@@ -104,20 +104,33 @@ export default function Intro() {
               <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
             </div>
           </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {offices.map((office, i) => (
-              <ScrollReveal key={i} delay={i * 50}>
-                <div className="bg-[#F8FAFC] border border-slate-100 rounded-2xl p-6 hover:shadow-md transition-all duration-300 h-full flex items-start gap-4">
-                  <div className="text-[#2B4C8C] text-xl mt-1">📍</div>
-                  <div>
-                    <h3 className="font-bold text-slate-800 text-[15px] mb-1">{office.name}</h3>
-                    <p className="text-slate-500 text-xs leading-relaxed">{office.address}</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+ 
+          <ScrollReveal delay={100}>
+            <div className="max-w-4xl mx-auto overflow-hidden bg-white border border-slate-100 rounded-3xl shadow-sm">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-slate-50 border-b border-slate-100">
+                      <th className="px-8 py-4.5 text-sm font-extrabold text-[#0A1A2F] w-1/3">사무소명</th>
+                      <th className="px-8 py-4.5 text-sm font-extrabold text-[#0A1A2F]">소재지 및 주소</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {offices.map((office, i) => (
+                      <tr key={i} className="hover:bg-slate-50/50 transition-colors">
+                        <td className="px-8 py-4 text-sm font-bold text-[#2B4C8C] whitespace-nowrap">
+                          📍 {office.name}
+                        </td>
+                        <td className="px-8 py-4 text-sm text-slate-600 font-medium">
+                          {office.address}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

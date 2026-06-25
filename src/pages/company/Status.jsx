@@ -3,7 +3,7 @@ import PageBanner from '../../components/common/PageBanner'
 import ScrollReveal from '../../components/common/ScrollReveal'
 
 import ssgLogo from '../../assets/partners/ssg.svg'
-import homeplusLogo from '../../assets/partners/homeplus.svg'
+import homeplusLogo from '../../assets/partners/homeplus.png'
 import glovisLogo from '../../assets/partners/glovis.svg'
 import hyundaiDeptLogo from '../../assets/partners/hyundai_dept.svg'
 import haitaiLogo from '../../assets/partners/haitai.svg'
