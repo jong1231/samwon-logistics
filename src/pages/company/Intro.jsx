@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useContent } from '../../context/ContentContext'
 import PageBanner from '../../components/common/PageBanner'
 import ScrollReveal from '../../components/common/ScrollReveal'
@@ -5,6 +6,8 @@ import ScrollReveal from '../../components/common/ScrollReveal'
 export default function Intro() {
   const { content } = useContent()
   const { company, ceo } = content
+  const [filter, setFilter] = useState('all')
+  const [copiedIndex, setCopiedIndex] = useState(null)
 
   // Filter out the parent company from subsidiaries list if present, to only show the requested 5 subsidiaries
   // Parent is "삼원종합물류(주)", children: 삼원운수(주), (주)서진물류, 동국상운(주), (주)에스원글로벌, (주)에스엘맨파워
@@ -12,7 +15,7 @@ export default function Intro() {
     (sub) => sub.name !== '삼원종합물류㈜' && sub.name !== '삼원종합물류(주)'
   )
 
-  const offices = [
+  const offices = content.offices || [
     { name: '서울 본사', address: '서울시 서초구 효령로 328 아트리트21 6층' },
     { name: '인천 스마트허브', address: '인천광역시 서구 북항단지로 91 스마트허브센터' },
     { name: '남이천 물류센터', address: '경기도 이천시 모가면 공원로 134 B동 남이천 물류센터' },
@@ -24,6 +27,26 @@ export default function Intro() {
     { name: '이천 율면 사무소', address: '경기도 이천시 율면' },
     { name: '이천 석산리 사무소', address: '경기도 이천시 석산리' }
   ]
+
+  const getOfficeCategory = (name) => {
+    if (name.includes('본사')) return { label: '본사 (HQ)', type: 'main', color: 'blue', icon: '🏢' }
+    if (name.includes('물류센터') || name.includes('스마트허브') || name.includes('허브')) return { label: '물류 거점', type: 'main', color: 'emerald', icon: '📦' }
+    if (name.includes('백화점') || name.includes('더현대') || name.includes('현대')) return { label: '백화점 유통망', type: 'retail', color: 'amber', icon: '🛍️' }
+    return { label: '지역 사무소', type: 'local', color: 'indigo', icon: '📍' }
+  }
+
+  const handleCopyAddress = (address, index) => {
+    navigator.clipboard.writeText(address).then(() => {
+      setCopiedIndex(index)
+      setTimeout(() => setCopiedIndex(null), 2000)
+    })
+  }
+
+  const filteredOffices = offices.filter(office => {
+    if (filter === 'all') return true
+    const cat = getOfficeCategory(office.name)
+    return cat.type === filter
+  })
 
   return (
     <>
@@ -50,16 +73,37 @@ export default function Intro() {
 
           <div className="max-w-4xl mx-auto text-center">
             <ScrollReveal className="space-y-6">
-              <h3 className="text-2xl md:text-3xl font-bold text-[#0A1A2F] leading-snug">
-                고객의 성공을 지원하는 <br />
-                <span className="text-[#2B4C8C]">최상의 종합 물류 인프라</span>
+              <h3 className="text-2xl md:text-3xl font-bold text-[#0A1A2F] leading-snug whitespace-pre-wrap">
+                {company.overviewTitle ? (
+                  company.overviewTitle.split('\n').map((line, idx) => (
+                    <span key={idx}>
+                      {line}
+                      {idx < company.overviewTitle.split('\n').length - 1 && <br />}
+                    </span>
+                  ))
+                ) : (
+                  <>
+                    고객의 성공을 지원하는 <br />
+                    <span className="text-[#2B4C8C]">최상의 종합 물류 인프라</span>
+                  </>
+                )}
               </h3>
-              <p className="text-slate-600 leading-relaxed text-base md:text-lg">
-                삼원종합물류(주)는 1992년 설립 이후 지난 34년간 신뢰와 전문성을 바탕으로 전국 단위의 촘촘한 유통·기업 물류망을 구축해 왔습니다. 미들마일 수송부터 최종 라스트마일 배송, 창고 보관 서비스까지 끊김이 없는(Seamless) 원스톱 종합 물류 솔루션을 제공합니다.
-              </p>
-              <p className="text-slate-600 leading-relaxed text-base md:text-lg">
-                지속 가능한 친환경 전기·수소 화물차의 선제적 도입 및 스마트 WMS/TMS IT 기술 연동을 통해 탄소 배출 저감 및 투명한 화물 추적 서비스를 제공하여, 스마트 ESG 물류 생태계를 앞장서서 실천하고 있습니다.
-              </p>
+              {company.overviewDesc ? (
+                company.overviewDesc.split('\n').map((paragraph, idx) => (
+                  <p key={idx} className="text-slate-600 leading-relaxed text-base md:text-lg whitespace-pre-wrap">
+                    {paragraph}
+                  </p>
+                ))
+              ) : (
+                <>
+                  <p className="text-slate-600 leading-relaxed text-base md:text-lg">
+                    삼원종합물류(주)는 1992년 설립 이후 지난 34년간 신뢰와 전문성을 바탕으로 전국 단위의 촘촘한 유통·기업 물류망을 구축해 왔습니다. 미들마일 수송부터 최종 라스트마일 배송, 창고 보관 서비스까지 끊김이 없는(Seamless) 원스톱 종합 물류 솔루션을 제공합니다.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed text-base md:text-lg">
+                    지속 가능한 친환경 전기·수소 화물차의 선제적 도입 및 스마트 WMS/TMS IT 기술 연동을 통해 탄소 배출 저감 및 투명한 화물 추적 서비스를 제공하여, 스마트 ESG 물류 생태계를 앞장서서 실천하고 있습니다.
+                  </p>
+                </>
+              )}
             </ScrollReveal>
           </div>
         </div>
@@ -96,7 +140,7 @@ export default function Intro() {
       <section className="py-20 bg-white border-b border-slate-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <span className="text-[#2B4C8C] font-semibold text-sm tracking-widest uppercase bg-[#2B4C8C]/5 px-3 py-1 rounded-full">
                 Offices
               </span>
@@ -104,33 +148,92 @@ export default function Intro() {
               <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
             </div>
           </ScrollReveal>
- 
+
+          {/* Tab Selector */}
           <ScrollReveal delay={100}>
-            <div className="max-w-4xl mx-auto overflow-hidden bg-white border border-slate-100 rounded-3xl shadow-sm">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse">
-                  <thead>
-                    <tr className="bg-slate-50 border-b border-slate-100">
-                      <th className="px-8 py-4.5 text-sm font-extrabold text-[#0A1A2F] w-1/3">사무소명</th>
-                      <th className="px-8 py-4.5 text-sm font-extrabold text-[#0A1A2F]">소재지 및 주소</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100">
-                    {offices.map((office, i) => (
-                      <tr key={i} className="hover:bg-slate-50/50 transition-colors">
-                        <td className="px-8 py-4 text-sm font-bold text-[#2B4C8C] whitespace-nowrap">
-                          📍 {office.name}
-                        </td>
-                        <td className="px-8 py-4 text-sm text-slate-600 font-medium">
-                          {office.address}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+            <div className="flex flex-wrap justify-center gap-2 mb-12">
+              {[
+                { key: 'all', label: '전체 보기' },
+                { key: 'main', label: '본사 & 물류거점' },
+                { key: 'retail', label: '백화점 유통망' },
+                { key: 'local', label: '지역 사무소' }
+              ].map(tab => (
+                <button
+                  key={tab.key}
+                  onClick={() => setFilter(tab.key)}
+                  className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 ${
+                    filter === tab.key
+                      ? 'bg-[#2B4C8C] text-white shadow-lg shadow-[#2B4C8C]/20 scale-105'
+                      : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/55'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
             </div>
           </ScrollReveal>
+
+          {/* Office Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {filteredOffices.map((office, idx) => {
+              const cat = getOfficeCategory(office.name)
+              const badgeColors = {
+                blue: 'bg-blue-50 text-blue-700 border-blue-100',
+                emerald: 'bg-emerald-50 text-emerald-700 border-emerald-100',
+                amber: 'bg-amber-50 text-amber-700 border-amber-100',
+                indigo: 'bg-indigo-50 text-indigo-700 border-indigo-100'
+              }
+              const isCopied = copiedIndex === idx
+
+              return (
+                <ScrollReveal key={office.name} delay={idx * 50}>
+                  <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full group">
+                    <div>
+                      {/* Top Header inside card */}
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="text-3xl bg-slate-50 w-12 h-12 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          {cat.icon}
+                        </div>
+                        <span className={`text-xs font-bold px-2.5 py-1 rounded-full border ${badgeColors[cat.color]}`}>
+                          {cat.label}
+                        </span>
+                      </div>
+
+                      {/* Office Name & Address */}
+                      <h3 className="text-base font-extrabold text-[#0A1A2F] mb-3 group-hover:text-[#2B4C8C] transition-colors leading-snug">
+                        {office.name}
+                      </h3>
+                      <p className="text-slate-500 text-xs sm:text-sm font-semibold leading-relaxed mb-6">
+                        {office.address}
+                      </p>
+                    </div>
+
+                    {/* Bottom Action Buttons */}
+                    <div className="flex items-center gap-2 border-t border-slate-50 pt-4 mt-auto">
+                      <button
+                        onClick={() => handleCopyAddress(office.address, idx)}
+                        className={`flex-1 py-2 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                          isCopied
+                            ? 'bg-green-600 text-white shadow-xs'
+                            : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200/50'
+                        }`}
+                      >
+                        {isCopied ? '✓ 복사완료' : '📋 주소복사'}
+                      </button>
+                      <a
+                        href={`https://map.naver.com/v5/search/${encodeURIComponent(office.address)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 py-2 px-3 rounded-xl text-xs font-bold bg-[#2B4C8C]/5 hover:bg-[#2B4C8C] text-[#2B4C8C] hover:text-white transition-all text-center flex items-center justify-center gap-1 border border-[#2B4C8C]/10"
+                      >
+                        🗺️ 지도보기
+                      </a>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              )
+            })}
+          </div>
         </div>
       </section>
 

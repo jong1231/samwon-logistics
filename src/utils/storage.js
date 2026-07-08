@@ -6,7 +6,7 @@
  * 리사이즈하거나 운영 시 서버 저장으로 전환하세요.
  */
 
-const STORAGE_KEY = 'samwon_content_v4'
+const STORAGE_KEY = 'samwon_content_v5'
 
 export function loadContent() {
   try {

@@ -140,6 +140,20 @@ export default function Admin() {
     updateField('recruitment.openings', newOpenings)
   }
 
+  // 10.3. 사무소 현황 배열 핸들러
+  const handleAddOffice = () => {
+    const newOffices = [
+      ...(editContent.offices || []),
+      { name: '새로운 사무소', address: '소재지 및 주소를 입력하세요' }
+    ]
+    updateField('offices', newOffices)
+  }
+
+  const handleRemoveOffice = (idx) => {
+    const newOffices = (editContent.offices || []).filter((_, i) => i !== idx)
+    updateField('offices', newOffices)
+  }
+
   // Login Screen
   if (!isLoggedIn) {
     return (
@@ -332,6 +346,31 @@ export default function Admin() {
                 </div>
               </div>
 
+              {/* 신규 추가: 회사 개요 편집 */}
+              <div className="border-t pt-6 space-y-4">
+                <h3 className="text-lg font-bold text-slate-800">📝 회사 개요 (Intro Overview)</h3>
+                <div className="grid grid-cols-1 gap-6">
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-2">회사 개요 제목 (줄바꿈은 \n 입력)</label>
+                    <input
+                      type="text"
+                      value={editContent.company.overviewTitle || ''}
+                      onChange={e => updateField('company.overviewTitle', e.target.value)}
+                      className="w-full px-4 py-2.5 border rounded-xl font-bold"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-2">회사 개요 본문 (줄바꿈은 \n 입력)</label>
+                    <textarea
+                      value={editContent.company.overviewDesc || ''}
+                      onChange={e => updateField('company.overviewDesc', e.target.value)}
+                      rows={6}
+                      className="w-full px-4 py-2.5 border rounded-xl resize-none leading-relaxed"
+                    />
+                  </div>
+                </div>
+              </div>
+
               <div className="border-t pt-6 space-y-6">
                 <h3 className="text-lg font-bold text-slate-800">✉️ 대표이사 인사말</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -352,6 +391,49 @@ export default function Admin() {
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+
+              {/* 신규 추가: 사무소 현황 관리 */}
+              <div className="border-t pt-6 space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-bold text-slate-800">📍 사무소 현황 (Office Locations)</h3>
+                  <button
+                    onClick={handleAddOffice}
+                    className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-xs font-bold transition-colors"
+                  >
+                    + 사무소 추가
+                  </button>
+                </div>
+                <div className="grid grid-cols-1 gap-4 max-h-[400px] overflow-y-auto pr-2 border rounded-2xl p-4 bg-slate-50/50">
+                  {(editContent.offices || []).map((office, idx) => (
+                    <div key={idx} className="bg-white border rounded-xl p-4 flex flex-col md:flex-row items-center gap-4 relative shadow-2xs">
+                      <button
+                        onClick={() => handleRemoveOffice(idx)}
+                        className="absolute top-4 right-4 text-xs font-bold text-red-500 hover:underline md:static md:order-last md:ml-auto"
+                      >
+                        🗑️ 삭제
+                      </button>
+                      <div className="w-full md:w-1/4">
+                        <label className="block text-xs font-bold text-slate-500 mb-1">사무소명</label>
+                        <input
+                          type="text"
+                          value={office.name}
+                          onChange={e => updateField(`offices.${idx}.name`, e.target.value)}
+                          className="w-full px-3 py-1.5 border rounded-lg text-sm bg-white font-bold"
+                        />
+                      </div>
+                      <div className="w-full md:w-3/4">
+                        <label className="block text-xs font-bold text-slate-500 mb-1">소재지 및 주소</label>
+                        <input
+                          type="text"
+                          value={office.address}
+                          onChange={e => updateField(`offices.${idx}.address`, e.target.value)}
+                          className="w-full px-3 py-1.5 border rounded-lg text-sm bg-white"
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
