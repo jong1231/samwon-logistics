@@ -55,7 +55,7 @@ export default function Status() {
       <PageBanner
         title="주요현황"
         subtitle="삼원종합물류의 탄탄한 운송 인프라와 신뢰할 수 있는 비즈니스 파트너들을 소개합니다"
-        backgroundImage="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1920&q=80"
+        backgroundImage="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=1920&q=80"
       />
 
       {/* 장비 보유 현황 */}

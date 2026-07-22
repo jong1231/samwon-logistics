@@ -10,7 +10,7 @@ export default function History() {
       <PageBanner
         title="회사연혁"
         subtitle="34년 동안 고객과 함께 걸어온 삼원종합물류의 자랑스러운 발자취를 소개합니다"
-        backgroundImage="https://images.unsplash.com/photo-1553413077-190dd305871c?w=1920&q=80"
+        backgroundImage="https://images.unsplash.com/photo-1592085198739-ffcad7f36b54?w=1920&q=80"
       />
 
       <section className="py-20 bg-white">

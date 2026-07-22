@@ -155,7 +155,7 @@ export default function DriverJobs() {
       <PageBanner
         title="차주구인"
         subtitle="일자리 정보 및 신규 차량 분양 공고를 제공합니다"
-        backgroundImage="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1920&q=80"
+        backgroundImage="https://images.unsplash.com/photo-1473445730015-841f29a9490b?w=1920&q=80"
       />
 
       <section className="py-20 bg-white">

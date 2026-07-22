@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react'
 import { useContent } from '../../context/ContentContext'
 import ScrollReveal from '../common/ScrollReveal'
 
-// Import 4 generated truck scenes
-import heroScene1 from '../../assets/hero_scene1.png'
-import heroScene2 from '../../assets/hero_scene2.png'
-import heroScene3 from '../../assets/hero_scene3.png'
-import heroScene4 from '../../assets/hero_scene4.png'
+// Professional logistics photography (Unsplash License — free for commercial use)
+const heroScene1 = 'https://images.unsplash.com/photo-1695222833131-54ee679ae8e5?w=1920&q=80' // 간선 수송 트럭 주행
+const heroScene2 = 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=1920&q=80' // 물류센터 도크 항공뷰
+const heroScene3 = 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=1920&q=80'   // 대형 물류창고 내부
+const heroScene4 = 'https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=1920&q=80' // 도심 물류 네트워크 야경
 
 /**
  * 4-Scene Cinematic Image Slideshow Hero Section
