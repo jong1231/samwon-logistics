@@ -1,8 +1,3 @@
-import businessCorporateImg from '../assets/business_corporate.png'
-import businessDistributionImg from '../assets/business_distribution.png'
-import businessWarehouseImg from '../assets/business_warehouse.png'
-import businessBrokerageImg from '../assets/business_brokerage.png'
-
 export const defaultContent = {
   company: {
     name: '삼원종합물류㈜',
@@ -80,7 +75,7 @@ export const defaultContent = {
     fax: '02-597-2564',
     subway: '3호선 남부터미널역 3번 출구 도보 5분',
     bus: '서초동예술의전당 정류장 하차 (1500, 3000, 401)',
-    parking: '건물 기계식 주차장 이용 가능(방문 시 무료주차 도장 발급)'
+    parking: '건물 기계식 주차장 이용 가능 (방문 시 무료주차 도장 발급)'
   },
   offices: [
     { name: '서울 본사', address: '서울시 서초구 효령로 328 아트리트21 6층' },
@@ -119,7 +114,7 @@ export const defaultContent = {
   businessPages: {
     corporate: {
       title: '기업물류 (Middle Mile)',
-      bannerImage: 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=1920&q=80',
+      bannerImage: 'https://images.unsplash.com/photo-1473445730015-841f29a9490b?w=1920&q=80',
       label: 'MIDDLE MILE',
       slogan: '공장과 거점 사이, 끊기지 않는 공급망의 심장부를 삼원이 운영합니다',
       overview: '생산지에서 물류센터, 혹은 거점 간을 연결하는 미들마일(Middle Mile) 구간은 공급망 전체의 효율을 결정짓는 핵심 구간입니다. 이 구간에서의 지연이나 사고는 후속 공정 전체의 차질로 이어집니다.\n\n삼원종합물류는 전자·기기, 의약품, 신선 F&B, 편의점·공산품 등 산업별 특성을 반영한 전용 차량 편성과 JIT(Just-In-Time) 적기 운송 시스템을 가동하여, 화주가 요구하는 정시 도착률과 화물 무결성을 동시에 보장합니다.',
@@ -136,7 +131,7 @@ export const defaultContent = {
     },
     distribution: {
       title: '유통물류 (Last Mile)',
-      bannerImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=80',
+      bannerImage: 'https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=1920&q=80',
       label: 'LAST MILE',
       slogan: '고객의 문 앞, 마지막 1미터까지 — 귀사의 브랜드 경험을 완성합니다',
       overview: '라스트마일(Last Mile) 배송은 소비자가 브랜드를 직접 체감하는 최종 접점입니다. 배송 지연, 오배송, 파손은 곧바로 고객 이탈과 브랜드 신뢰 하락으로 이어집니다.\n\n삼원종합물류는 SSG.COM·홈플러스 등 국내 Top-Tier 유통사 전담 배송 인프라, 현대백화점 VIP 프리미엄 퀵커머스, 의약품 GDP 기준 라스트마일 배송 등 채널별 특화 서비스를 운영하여 정시 배송률 98% 이상을 지속 달성하고 있습니다.',
