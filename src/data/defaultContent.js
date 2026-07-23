@@ -1,3 +1,8 @@
+import businessCorporateImg from '../assets/business_corporate.png'
+import businessDistributionImg from '../assets/business_distribution.png'
+import businessWarehouseImg from '../assets/business_warehouse.png'
+import businessBrokerageImg from '../assets/business_brokerage.png'
+
 export const defaultContent = {
   company: {
     name: '삼원종합물류㈜',
