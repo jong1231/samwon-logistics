@@ -54,7 +54,7 @@ export default function Status() {
     <>
       <PageBanner
         title="주요현황"
-        subtitle="삼원종합물류의 탄탄한 운송 인프라와 신뢰할 수 있는 비즈니스 파트너들을 소개합니다"
+        subtitle="1,000대 이상의 자체 영업용 차량과 40개 이상의 장기 파트너사가 만드는 물류 인프라를 소개합니다"
         backgroundImage="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1920&q=80"
       />
 
@@ -67,11 +67,11 @@ export default function Status() {
                 Equipment Fleet
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-[#0A1A2F] mt-3">
-                장비 보유 현황
+                차량 Fleet 운용 현황
               </h2>
               <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
               <p className="text-slate-500 text-sm mt-4">
-                다양한 규격과 용도의 전문 화물 운송 차량을 상시 운용하고 있습니다.
+                산업별 특성에 맞는 전문 화물 차량을 전국 네트워크에서 상시 운용합니다.
               </p>
             </div>
           </ScrollReveal>
@@ -83,7 +83,7 @@ export default function Status() {
               <div className="text-4xl md:text-6xl font-extrabold text-white mb-2">
                 {totalCount}<span className="text-2xl text-white/70 ml-1">대+</span>
               </div>
-              <p className="text-white/50 text-sm">기업물류, 유통물류, HACCP 콜드체인 및 특수 운송 완벽 지원</p>
+              <p className="text-white/50 text-sm">간선 수송 · 권역 배송 · HACCP 콜드체인 · 특수화물 전 영역 즉시 투입 가능</p>
             </div>
           </ScrollReveal>
 
@@ -114,11 +114,11 @@ export default function Status() {
                 Partners
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-[#0A1A2F] mt-3">
-                파트너사
+                주요 거래처 및 파트너
               </h2>
               <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
               <p className="text-slate-500 text-sm mt-4">
-                대한민국 대표 대기업 및 유통 브랜드들이 삼원종합물류와 함께 신뢰를 만들어 가고 있습니다.
+                대한민국을 대표하는 유통·제조·제약·식품 기업들이 삼원종합물류의 물류 역량을 신뢰하고 있습니다.
               </p>
             </div>
           </ScrollReveal>

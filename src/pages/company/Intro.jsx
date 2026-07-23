@@ -52,7 +52,7 @@ export default function Intro() {
     <>
       <PageBanner
         title="회사소개"
-        subtitle="신뢰와 전문성으로 대한민국 물류의 미래를 선도하는 삼원종합물류(주)입니다."
+        subtitle="34년간 축적한 현장 역량과 6개 전문 계열사의 통합 인프라로 대한민국 공급망을 설계합니다."
         backgroundImage="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80"
       />
 
@@ -273,7 +273,7 @@ export default function Intro() {
             <ScrollReveal direction="right" className="lg:col-span-3">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-1 h-10 bg-[#2B4C8C] rounded-full" />
-                <h3 className="text-xl font-bold text-[#0A1A2F]">안녕하십니까. 삼원종합물류 대표이사 정종혁입니다.</h3>
+                <h3 className="text-xl font-bold text-[#0A1A2F]">존경하는 고객 여러분, 파트너 여러분께.</h3>
               </div>
 
               <div className="text-slate-600 leading-loose text-sm space-y-4">
@@ -305,7 +305,7 @@ export default function Intro() {
                 계열사 현황
               </h2>
               <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
-              <p className="text-slate-500 text-sm mt-4">각 물류 분야별 전문 역량을 갖추어 최상의 통합 시너지를 창출합니다.</p>
+              <p className="text-slate-500 text-sm mt-4">6개 전문 법인이 각 물류 영역의 핵심 역량을 담당하며, 그룹 차원의 통합 시너지를 실현합니다.</p>
             </div>
           </ScrollReveal>
 

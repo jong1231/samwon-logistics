@@ -46,9 +46,9 @@ export default function Contact() {
 
   const processSteps = contactPage?.processSteps || [
     { num: '01', title: '고객문의', desc: '홈페이지 온라인 제휴문의 신청 또는 대표 번호(02-598-3001) 접수', icon: '📞' },
-    { num: '02', title: '현장조사분석', desc: '담당 물류 컨설턴트가 고객사의 유통망 배송 경로 및 물동량 현장 실사 분석', icon: '📊' },
-    { num: '03', title: '견적 및 컨설팅', desc: '운송 모듈 분석 기반 비용 절감안 제시, 최적 단가 산출 및 견적서 제출', icon: '💡' },
-    { num: '04', title: '계약 및 실행', desc: '최종 운영 계약 체결 및 SLA 협의 후 전담 배송 차량 고정 배치, WMS API 연동', icon: '🤝' }
+    { num: '02', title: '현장조사분석', desc: '전담 물류 컨설턴트가 귀사의 물동량·배송 권역·운송 패턴을 현장 실사 분석', icon: '📊' },
+    { num: '03', title: '견적 및 컨설팅', desc: '데이터 기반 운송 시뮬레이션으로 최적 단가를 산출하고, 비용 절감안을 포함한 견적서 제출', icon: '💡' },
+    { num: '04', title: '계약 및 실행', desc: 'SLA 협의 및 운영 계약 체결 후 전담 차량 고정 배치, WMS·TMS API 연동 및 운영 개시', icon: '🤝' }
   ]
 
   const faqs = contactPage?.faqs || [
@@ -69,7 +69,7 @@ export default function Contact() {
           <span className="text-[#2B4C8C] font-bold text-sm tracking-widest uppercase bg-[#2B4C8C]/5 px-3 py-1.5 rounded-full">Contact Us</span>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-[#0A1A2F] mt-4 tracking-tight">고객센터 & 제휴문의</h1>
           <p className="text-slate-600 text-lg mt-4 max-w-2xl mx-auto">
-            삼원종합물류는 고객사의 성공적인 공급망 혁신을 위해 24시간 열려 있습니다. 문의를 남겨주시면 신속히 답변해 드리겠습니다.
+            물류 비용 절감, 배송 품질 향상, 공급망 리스크 관리까지 — 전담 물류 컨설턴트가 귀사의 과제를 진단하고 최적의 솔루션을 제안합니다.
           </p>
         </div>
 
@@ -78,7 +78,7 @@ export default function Contact() {
           <ScrollReveal>
             <div className="text-center mb-10">
               <h3 className="text-2xl font-bold text-[#0A1A2F]">제휴 문의 절차</h3>
-              <p className="text-slate-500 text-sm mt-1">체계적이고 과학적인 프로세스로 최상의 만족을 제공합니다.</p>
+              <p className="text-slate-500 text-sm mt-1">현장 실사 기반의 과학적 프로세스로 정확한 견적과 최적의 운영안을 제시합니다.</p>
               <div className="w-12 h-1 bg-[#2B4C8C] rounded-full mt-3 mx-auto" />
             </div>
           </ScrollReveal>
@@ -159,7 +159,7 @@ export default function Contact() {
             <div className="bg-[#2B4C8C]/5 rounded-2xl p-5 border border-[#2B4C8C]/10">
               <h4 className="font-bold text-[#2B4C8C] text-base flex items-center gap-2">💬 카카오톡 실시간 관제</h4>
               <p className="text-slate-600 text-xs mt-2 leading-relaxed">
-                기업 전담 카카오톡 채널을 통해 오더 현황, 차량 위치 및 정산 문제를 1:1로 실시간 소통할 수 있습니다.
+                기업 전용 카카오톡 채널로 오더 현황·차량 위치·정산 이슈를 1:1 실시간 소통합니다.
               </p>
             </div>
           </div>

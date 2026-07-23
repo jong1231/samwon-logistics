@@ -17,7 +17,7 @@ export default function Statistics() {
         <ScrollReveal>
           <div className="text-center mb-16">
             <span className="text-[#2B4C8C] font-semibold text-sm tracking-widest uppercase">Performance</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-3">핵심 실적</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-3">삼원의 핵심 지표</h2>
             <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
           </div>
         </ScrollReveal>

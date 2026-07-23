@@ -10,26 +10,26 @@ export default function BusinessIntro() {
 
   // Fallback to default stats if not defined
   const stats = businessIntro?.stats || [
-    { value: '1992 년', label: '설 립 · SINCE 1992', desc: '30년 이상의 역사와 신뢰' },
-    { value: '1,000 대+', label: '운 행 차 량 보 유', desc: '전국 단위의 거대한 화물 네트워크' },
-    { value: '1,000 개', label: '영 업 용 번 호 보 유', desc: '안정적인 자체 정식 영업용 번호판' },
-    { value: '40 개사+', label: '파 트 너 거 래 처', desc: '대기업 및 중견기업과의 굳건한 파트너십' }
+    { value: '1992 년', label: '설 립 · SINCE 1992', desc: '34년간의 현장 운영 역량' },
+    { value: '1,000 대+', label: '운 행 차 량 보 유', desc: '자체 영업용 차량 전국 네트워크' },
+    { value: '1,000 개', label: '영 업 용 번 호 보 유', desc: '등록 영업용 번호판 보유' },
+    { value: '40 개사+', label: '파 트 너 거 래 처', desc: '장기 거래 파트너사 네트워크' }
   ]
 
   // Fallback to default timeline if not defined
   const timelineItems = businessIntro?.timeline || [
-    { id: 'corporate', title: '기업물류', english: 'MIDDLE MILE', desc: '생산지에서 물류센터, 거점간을 잇는 가장 안정적인 구간 운송', color: '#2B4C8C', path: '/business/corporate' },
-    { id: 'distribution', title: '유통물류', english: 'LAST MILE', desc: '고객의 문 앞, 마지막 순간까지 완벽한 배송 품질 완성', color: '#E07A5F', path: '/business/distribution' },
-    { id: 'warehouse', title: '창고운영 및 리스크관리', english: 'WAREHOUSING', desc: 'WMS 기반 자동화 관리와 24/7 전담 관제 스마트 시스템', color: '#3F6B58', path: '/business/warehouse' },
-    { id: 'brokerage', title: '주선 · 에스원 퀵', english: 'BROKERAGE', desc: '전화 한 통 없이 접수부터 정산까지 잇는 디지털 혁신 퀵', color: '#7F5539', path: '/business/brokerage' },
-    { id: 'consulting', title: '물류컨설팅', english: 'SCM CONSULTING', desc: '30년 노하우와 IT 빅데이터를 접목한 공급망 비용 최적화', color: '#4B3F72', path: '/business/consulting' }
+    { id: 'corporate', title: '기업물류', english: 'MIDDLE MILE', desc: '공장·거점 간 정시 수송, 산업별 전용 차량 JIT 운영', color: '#2B4C8C', path: '/business/corporate' },
+    { id: 'distribution', title: '유통물류', english: 'LAST MILE', desc: '정시 배송률 98% 이상, 대형 유통사 전담 인프라 운영', color: '#E07A5F', path: '/business/distribution' },
+    { id: 'warehouse', title: '창고운영 및 리스크관리', english: 'WAREHOUSING', desc: 'WMS 자동화 + 종합 보험, 이중 안전망으로 리스크 차단', color: '#3F6B58', path: '/business/warehouse' },
+    { id: 'brokerage', title: '주선 · 에스원 퀵', english: 'BROKERAGE', desc: '접수·배차·관제·정산 전 과정 디지털 원클릭 완결', color: '#7F5539', path: '/business/brokerage' },
+    { id: 'consulting', title: '물류컨설팅', english: 'SCM CONSULTING', desc: '34년 현장 데이터 × 시뮬레이션 분석, 실행형 컨설팅', color: '#4B3F72', path: '/business/consulting' }
   ]
 
   return (
     <>
       <PageBanner
         title="사업영역"
-        subtitle="생산지에서 소비자의 문 앞까지, 삼원종합물류가 완벽한 흐름을 연결합니다."
+        subtitle="미들마일부터 라스트마일까지, 공급망 전 구간을 하나의 물류 체계로 연결합니다."
         backgroundImage="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80"
       />
       <BusinessSubNav />
@@ -40,15 +40,15 @@ export default function BusinessIntro() {
           <ScrollReveal>
             <div className="text-center max-w-4xl mx-auto mb-16">
               <h2 className="text-3xl md:text-5xl font-extrabold text-[#0A1A2F] tracking-tight leading-tight mb-8">
-                대한민국 물류의 <br className="sm:hidden" />
+                공급망의 <br className="sm:hidden" />
                 <span className="text-[#2B4C8C] relative">
-                  모든 구간을 잇습니다
+                  모든 구간을 하나로 잇습니다
                   <span className="absolute left-0 bottom-0 w-full h-[6px] bg-[#2B4C8C]/15 -z-10 rounded-full" />
                 </span>
               </h2>
               <div className="w-12 h-1 bg-[#2B4C8C] mx-auto mb-8 rounded-full" />
               <p className="text-slate-700 text-lg md:text-xl font-medium leading-relaxed max-w-3xl mx-auto">
-                삼원종합물류는 1992년부터 지금까지, 생산지에서 소비자의 문 앞까지 끊기지 않는 흐름을 만들어왔습니다. 기업물류, 유통물류, 창고운영, 주선·퀵서비스, 물류컨설팅까지 모든 영역을 하나의 흐름으로 연결하는 대한민국 대표 종합물류 기업입니다.
+                생산거점에서 소비자의 문 앞까지 — 삼원종합물류는 기업물류, 유통물류, 창고운영, 주선·퀵서비스, SCM 컨설팅의 5대 핵심 영역을 수직·수평 통합 체계로 운영하여, 화주의 물류 비용 절감과 서비스 수준(SLA) 극대화를 동시에 실현합니다.
               </p>
             </div>
           </ScrollReveal>
@@ -83,10 +83,10 @@ export default function BusinessIntro() {
           <ScrollReveal>
             <div className="text-center mb-20">
               <h3 className="text-2xl md:text-3xl font-extrabold text-[#0A1A2F] mt-4">
-                종합물류 프로세스 연계망
+                5대 사업 영역 프로세스
               </h3>
               <p className="text-slate-500 text-sm mt-3">
-                각 비즈니스 영역이 유기적으로 연계되어 유입부터 배송까지 하나의 연속된 흐름으로 이어집니다.
+                각 사업 영역이 유기적으로 연계되어 원자재 입고부터 최종 배송까지 하나의 끊김 없는 물류 워크플로우를 형성합니다.
               </p>
               <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
             </div>
@@ -154,16 +154,16 @@ export default function BusinessIntro() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal>
             <h3 className="text-2xl md:text-3xl font-extrabold text-[#0A1A2F] mb-6">
-              삼원종합물류와 함께 성장할 최상의 파트너십을 시작하세요
+              귀사의 공급망 혁신, 삼원종합물류와 함께 시작하십시오
             </h3>
             <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-10 max-w-2xl mx-auto">
-              미들마일부터 라스트마일, 스마트 보관 및 배송 대행, 프로세스 혁신을 위한 맞춤형 컨설팅까지. 삼원종합물류의 종합물류 인프라가 든든하게 뒤받침하겠습니다.
+              34년간 검증된 현장 운영 역량과 6개 전문 계열사의 통합 인프라가 귀사의 물류 비용을 절감하고, 서비스 품질을 높이며, 공급망 리스크를 차단합니다.
             </p>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#2B4C8C] hover:bg-[#1C325E] text-white rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-[#2B4C8C]/15"
             >
-              <span>상담 및 제휴 문의하기</span>
+              <span>물류 상담 및 제휴 문의</span>
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>

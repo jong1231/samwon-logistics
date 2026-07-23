@@ -154,7 +154,7 @@ export default function DriverJobs() {
     <>
       <PageBanner
         title="차주구인"
-        subtitle="일자리 정보 및 신규 차량 분양 공고를 제공합니다"
+        subtitle="안정적 물량, 투명한 정산, 전담 관리자 지원 — 삼원과 함께하는 차주 파트너십 기회를 확인하세요"
         backgroundImage="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1920&q=80"
       />
 
@@ -165,8 +165,8 @@ export default function DriverJobs() {
           <ScrollReveal>
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 pb-6 border-b border-slate-100">
               <div>
-                <h2 className="text-2xl font-bold text-[#0A1A2F]">차주 구인 & 분양 공고</h2>
-                <p className="text-slate-500 text-sm mt-1">상하차 노선 정보 및 맞춤형 수입 기회를 확인하세요.</p>
+                <h2 className="text-2xl font-bold text-[#0A1A2F]">차주 파트너 모집 공고</h2>
+                <p className="text-slate-500 text-sm mt-1">고정 노선·안정 물량·투명 정산 기반의 차주 파트너십 기회를 확인하세요.</p>
               </div>
 
               <div className="flex flex-wrap items-center gap-4">

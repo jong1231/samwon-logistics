@@ -142,7 +142,7 @@ export default function BusinessPage({ contentKey }) {
           <ScrollReveal>
             <div className="text-center mb-16">
               <span className="text-[#2B4C8C] font-extrabold text-xs tracking-widest uppercase">Core Strengths</span>
-              <h3 className="text-3xl font-extrabold text-[#0A1A2F] mt-2">핵심 강점</h3>
+              <h3 className="text-3xl font-extrabold text-[#0A1A2F] mt-2">핵심 경쟁력</h3>
               <div className="w-12 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
             </div>
           </ScrollReveal>

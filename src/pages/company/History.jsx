@@ -9,7 +9,7 @@ export default function History() {
     <>
       <PageBanner
         title="회사연혁"
-        subtitle="34년 동안 고객과 함께 걸어온 삼원종합물류의 자랑스러운 발자취를 소개합니다"
+        subtitle="1992년 설립 이래 34년간 끊임없이 성장해 온 삼원종합물류의 궤적을 소개합니다"
         backgroundImage="https://images.unsplash.com/photo-1553413077-190dd305871c?w=1920&q=80"
       />
 
@@ -17,9 +17,9 @@ export default function History() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-[#2B4C8C] font-semibold text-sm tracking-widest uppercase bg-[#2B4C8C]/5 px-3 py-1 rounded-full">History</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A1A2F] mt-3">삼원의 34년 발자취</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0A1A2F] mt-3">삼원의 34년, 성장의 궤적</h2>
             <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
-            <p className="text-slate-500 text-sm mt-4">1992년 설립 이래 끊임없는 신뢰와 전문성으로 대한민국 물류 산업의 역사를 만들어 왔습니다.</p>
+            <p className="text-slate-500 text-sm mt-4">화물 운송 주선 사업으로 출발하여, 종합물류 그룹으로 도약하기까지 — 매 순간 고객의 공급망과 함께 성장해 왔습니다.</p>
           </div>
 
           <div className="relative">

@@ -13,7 +13,7 @@ export default function BusinessPreview() {
             <span className="text-[#2B4C8C] font-semibold text-sm tracking-widest uppercase">Business Areas</span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#0A1A2F] mt-3">사업영역</h2>
             <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
-            <p className="text-gray-500 mt-4 max-w-xl mx-auto">체계적인 물류 시스템으로 고객의 성공적인 비즈니스를 지원합니다.</p>
+            <p className="text-gray-500 mt-4 max-w-xl mx-auto">화주의 공급망 전 구간을 커버하는 5대 핵심 물류 서비스</p>
           </div>
         </ScrollReveal>
 

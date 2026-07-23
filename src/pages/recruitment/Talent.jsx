@@ -5,40 +5,40 @@ export default function Talent() {
   const values = [
     {
       icon: '🎯',
-      title: '도전정신 (Challenge)',
-      desc: '현실에 안주하지 않고 끊임없는 학습과 열정으로 물류 프로세스의 변화와 혁신을 앞장서서 이끌어가는 인재',
+      title: '실행력 (Execution)',
+      desc: '현장에서 문제를 발견하면 즉시 판단하고 행동으로 옮깁니다. 완벽한 계획보다 빠른 실행과 개선의 반복을 중시합니다.',
       color: 'from-blue-500/10 to-indigo-500/5 border-blue-100',
       badgeColor: 'bg-blue-100 text-blue-800'
     },
     {
       icon: '🤝',
-      title: '고객신뢰 (Trust)',
-      desc: '약속을 소중히 여겨 정직한 태도로 동료, 고객, 비즈니스 파트너와 흔들림 없는 두터운 유대와 신뢰를 쌓는 인재',
+      title: '신뢰 구축 (Trust)',
+      desc: '고객사·차주·동료와의 약속을 반드시 지킵니다. 투명한 소통으로 장기적 파트너십의 기반을 만드는 인재를 존중합니다.',
       color: 'from-emerald-500/10 to-teal-500/5 border-emerald-100',
       badgeColor: 'bg-emerald-100 text-emerald-800'
     },
     {
       icon: '💡',
-      title: '전문성 (Professionalism)',
-      desc: '데이터 분석 능력과 디지털 물류 솔루션을 완벽히 이해하고 활용하여 최고의 서비스 품질(SLA)을 책임지는 전문가',
+      title: '전문성 (Expertise)',
+      desc: '물류 운영·WMS/TMS 시스템·데이터 분석 등 맡은 영역에서 업계 최고 수준의 역량을 갖추고 SLA를 책임지는 전문가',
       color: 'from-amber-500/10 to-orange-500/5 border-amber-100',
       badgeColor: 'bg-amber-100 text-amber-800'
     },
     {
       icon: '🌐',
-      title: '상생협력 (Collaboration)',
-      desc: '열린 소통과 다양성에 대한 배려를 통해 삼원 그룹 계열사 전체의 긴밀한 상생 협력 시너지를 창출하는 인재',
+      title: '협업 (Teamwork)',
+      desc: '6개 계열사와 40개+ 거래처가 하나의 공급망으로 연결됩니다. 열린 소통과 상호 존중으로 그룹 전체의 시너지를 창출하는 인재',
       color: 'from-purple-500/10 to-fuchsia-500/5 border-purple-100',
       badgeColor: 'bg-purple-100 text-purple-800'
     }
   ]
 
   const benefits = [
-    { title: '성과 보상', desc: '경쟁력 있는 연봉제 및 경영 목표 달성에 따른 인센티브/성과급 상시 지급', icon: '💰' },
-    { title: '건강 & 생활', desc: '매년 정기 정밀 종합 건강검진 지원 및 임직원 상해 보험 가입', icon: '🏥' },
+    { title: '성과 보상', desc: '업계 상위 수준 연봉제, 분기별 경영 성과 연동 인센티브 및 성과급 지급', icon: '💰' },
+    { title: '건강 & 생활', desc: '매년 정밀 종합 건강검진 전액 지원, 임직원 단체 상해보험 가입', icon: '🏥' },
     { title: '경조사 지원', desc: '경조 휴가 부여, 경조금 지급 및 근조 화환/과일 바구니 배송 지원', icon: '🎁' },
-    { title: '교육 & 개발', desc: '도서 구입비 무제한 지원 및 직무 관련 전문 사외 교육/세미나 비용 전액 지원', icon: '📚' },
-    { title: '포상제도', desc: '장기 근속 포상(휴가 및 포상금), 연말 우수 사원 표창 및 리워드 지급', icon: '🏆' },
+    { title: '교육 & 개발', desc: '직무 관련 도서·교육·세미나·자격증 취득 비용 전액 지원', icon: '📚' },
+    { title: '포상제도', desc: '장기 근속 포상(특별 휴가+포상금), 분기별 우수 사원 표창 및 리워드', icon: '🏆' },
     { title: '사내 복지', desc: '사내 라운지 내 무제한 고급 커피머신/간식 제공 및 생일 축하 상품권 지급', icon: '🎉' }
   ]
 
@@ -54,7 +54,7 @@ export default function Talent() {
     <>
       <PageBanner
         title="인재상"
-        subtitle="삼원종합물류의 끊임없는 성장 혁신을 주도할 열정 넘치는 물류 주역을 모집합니다"
+        subtitle="물류는 사람이 만듭니다. 현장 역량과 기술 감각을 겸비한 차세대 물류 리더를 찾습니다"
         backgroundImage="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&q=80"
       />
 
@@ -67,11 +67,11 @@ export default function Talent() {
                 Core Values
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-[#0A1A2F] mt-3">
-                삼원인이 지닌 4대 가치
+                삼원이 찾는 인재의 4대 역량
               </h2>
               <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
               <p className="text-slate-500 text-sm mt-4">
-                우리는 기본에 충실하고 새로운 기술과 변화를 반기며 함께 성장하는 사람을 환영합니다.
+                현장에서 즉시 판단하고, 데이터로 검증하며, 동료와 파트너를 존중하는 사람을 환영합니다.
               </p>
             </div>
           </ScrollReveal>
@@ -145,7 +145,7 @@ export default function Talent() {
               </h2>
               <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
               <p className="text-slate-500 text-sm mt-4">
-                삼원은 임직원 개개인의 삶과 성과가 존중받는 최고의 근무 환경을 만들어 갑니다.
+                구성원 한 사람 한 사람의 전문성과 성장이 존중받는 근무 환경을 만들어 갑니다.
               </p>
             </div>
           </ScrollReveal>

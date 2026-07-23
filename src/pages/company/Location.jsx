@@ -17,7 +17,7 @@ export default function Location() {
     <>
       <PageBanner
         title="찾아오시는 길"
-        subtitle="삼원종합물류 본사로 찾아오시는 길을 안내해 드립니다."
+        subtitle="삼원종합물류 서울 본사(서초구) 방문 안내입니다."
         backgroundImage="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80"
       />
 
@@ -28,7 +28,7 @@ export default function Location() {
           <ScrollReveal>
             <div className="text-center mb-12">
               <span className="text-[#2B4C8C] font-extrabold text-xs tracking-widest uppercase">Location & Map</span>
-              <h2 className="text-3xl font-extrabold text-[#0A1A2F] mt-2">삼원종합물류 본사 위치</h2>
+              <h2 className="text-3xl font-extrabold text-[#0A1A2F] mt-2">본사 오시는 길</h2>
               <div className="w-12 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
             </div>
           </ScrollReveal>
@@ -79,7 +79,7 @@ export default function Location() {
           <ScrollReveal>
             <div className="bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-12 shadow-sm">
               <h3 className="text-xl font-extrabold text-[#0A1A2F] mb-8 pb-4 border-b border-slate-200 flex items-center gap-2">
-                🏢 상세 교통 및 주차 안내
+                🏢 교통편 및 주차 안내
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
