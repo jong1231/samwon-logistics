@@ -26,7 +26,7 @@ export default function PageBanner({ title, subtitle, backgroundImage }) {
   } else if (location.pathname.startsWith('/business')) {
     displayTitle = breadcrumbMap[location.pathname] || '사업영역'
   } else if (location.pathname.startsWith('/recruitment')) {
-    displayTitle = '인재상'
+    displayTitle = breadcrumbMap[location.pathname] || title || '채용정보'
   }
 
   return (
