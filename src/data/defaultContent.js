@@ -39,10 +39,10 @@ export const defaultContent = {
     { number: 40, suffix: '개사+', label: '장기 파트너 거래처' }
   ],
   businessAreas: [
-    { id: 'corporate', title: '기업물류 (Middle Mile)', desc: '공장·물류센터 간 정시 수송이 지연되면 생산 라인이 멈춥니다. 산업별 전용 차량과 JIT 시스템으로 귀사의 간선 구간을 무중단 운영합니다.', image: 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80', link: '/business/corporate' },
-    { id: 'distribution', title: '유통물류 (Last Mile)', desc: '배송 지연과 오배송은 고객 이탈로 직결됩니다. SSG·홈플러스 등 대형 유통 전담 인프라로 정시 배송률 98% 이상을 달성하고 있습니다.', image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80', link: '/business/distribution' },
-    { id: 'brokerage', title: '주선 · 퀵서비스 (S1 Quick)', desc: '전화 접수, 수기 정산, 불투명한 배차 — 레거시 물류의 비효율을 디지털 플랫폼 하나로 해결합니다. 접수부터 정산까지 원클릭 완결.', image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80', link: '/business/brokerage' },
-    { id: 'warehouse', title: '창고운영 및 리스크관리', desc: '재고 오차와 화물 사고는 곧 비용입니다. WMS 자동화와 종합 보험 체계로 휴먼 에러와 손실 리스크를 원천 차단합니다.', image: 'https://images.unsplash.com/photo-1565891741441-64926e441838?w=800&q=80', link: '/business/warehouse' }
+    { id: 'corporate', title: '기업물류 (Middle Mile)', desc: '공장·물류센터 간 정시 수송이 지연되면 생산 라인이 멈춥니다. 산업별 전용 차량과 JIT 시스템으로 귀사의 간선 구간을 무중단 운영합니다.', image: businessCorporateImg, link: '/business/corporate' },
+    { id: 'distribution', title: '유통물류 (Last Mile)', desc: '배송 지연과 오배송은 고객 이탈로 직결됩니다. SSG·홈플러스 등 대형 유통 전담 인프라로 정시 배송률 98% 이상을 달성하고 있습니다.', image: businessDistributionImg, link: '/business/distribution' },
+    { id: 'brokerage', title: '주선 · 퀵서비스 (S1 Quick)', desc: '전화 접수, 수기 정산, 불투명한 배차 — 레거시 물류의 비효율을 디지털 플랫폼 하나로 해결합니다. 접수부터 정산까지 원클릭 완결.', image: businessBrokerageImg, link: '/business/brokerage' },
+    { id: 'warehouse', title: '창고운영 및 리스크관리', desc: '재고 오차와 화물 사고는 곧 비용입니다. WMS 자동화와 종합 보험 체계로 휴먼 에러와 손실 리스크를 원천 차단합니다.', image: businessWarehouseImg, link: '/business/warehouse' }
   ],
   ceo: {
     name: '정종혁',
@@ -119,7 +119,7 @@ export const defaultContent = {
   businessPages: {
     corporate: {
       title: '기업물류 (Middle Mile)',
-      bannerImage: 'https://images.unsplash.com/photo-1473445730015-841f29a9490b?w=1920&q=80',
+      bannerImage: businessCorporateImg,
       label: 'MIDDLE MILE',
       slogan: '공장과 거점 사이, 끊기지 않는 공급망의 심장부를 삼원이 운영합니다',
       overview: '생산지에서 물류센터, 혹은 거점 간을 연결하는 미들마일(Middle Mile) 구간은 공급망 전체의 효율을 결정짓는 핵심 구간입니다. 이 구간에서의 지연이나 사고는 후속 공정 전체의 차질로 이어집니다.\n\n삼원종합물류는 전자·기기, 의약품, 신선 F&B, 편의점·공산품 등 산업별 특성을 반영한 전용 차량 편성과 JIT(Just-In-Time) 적기 운송 시스템을 가동하여, 화주가 요구하는 정시 도착률과 화물 무결성을 동시에 보장합니다.',
@@ -136,7 +136,7 @@ export const defaultContent = {
     },
     distribution: {
       title: '유통물류 (Last Mile)',
-      bannerImage: 'https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=1920&q=80',
+      bannerImage: businessDistributionImg,
       label: 'LAST MILE',
       slogan: '고객의 문 앞, 마지막 1미터까지 — 귀사의 브랜드 경험을 완성합니다',
       overview: '라스트마일(Last Mile) 배송은 소비자가 브랜드를 직접 체감하는 최종 접점입니다. 배송 지연, 오배송, 파손은 곧바로 고객 이탈과 브랜드 신뢰 하락으로 이어집니다.\n\n삼원종합물류는 SSG.COM·홈플러스 등 국내 Top-Tier 유통사 전담 배송 인프라, 현대백화점 VIP 프리미엄 퀵커머스, 의약품 GDP 기준 라스트마일 배송 등 채널별 특화 서비스를 운영하여 정시 배송률 98% 이상을 지속 달성하고 있습니다.',
@@ -153,7 +153,7 @@ export const defaultContent = {
     },
     brokerage: {
       title: '주선 · 에스원 퀵 서비스',
-      bannerImage: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1920&q=80',
+      bannerImage: businessBrokerageImg,
       label: 'BROKERAGE & QUICK SERVICE',
       slogan: '전화 접수, 수기 정산 — 레거시 물류의 비효율을 디지털 하나로 해결합니다',
       overview: '기존 화물 주선 방식의 근본적인 문제는 불투명성입니다. 전화 한 통으로 접수하고, 배차 현황을 알 수 없으며, 정산은 건별 현금으로 처리되는 구조에서는 비용 통제도, 서비스 품질 관리도 불가능합니다.\n\n에스원 퀵(S1 Quick) 플랫폼은 웹 기반 즉시 접수 → 실시간 배차 → B2B 카카오톡 1:1 관제 → 월별 통합 세금계산서 정산까지 물류 주선의 전 과정을 하나의 디지털 워크플로우로 완결합니다.',
@@ -170,7 +170,7 @@ export const defaultContent = {
     },
     warehouse: {
       title: '창고운영 및 리스크관리',
-      bannerImage: 'https://images.unsplash.com/photo-1565891741441-64926e441838?w=1920&q=80',
+      bannerImage: businessWarehouseImg,
       label: 'WAREHOUSING & RISK MANAGEMENT',
       slogan: '보이지 않는 곳에서 더 철저하게 — 시스템과 보험, 이중 안전망을 가동합니다',
       overview: '창고에서 발생하는 재고 오차, 피킹 오류, 화물 파손은 화주에게 직접적인 금전 손실입니다. 특히 식자재·의약품 등 유통기한 관리가 필수인 품목에서는 단 한 건의 실수가 전체 로트(Lot) 폐기로 이어질 수 있습니다.\n\n삼원종합물류는 WMS(창고관리시스템) 기반 바코드·RFID 자동 검수 체계로 휴먼 에러를 구조적으로 제거하고, 화물·화재·배상책임 종합 보험과 24/7 전담 관제팀의 이중 안전망으로 모든 종류의 운영 리스크를 원천 차단합니다.',
