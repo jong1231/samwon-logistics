@@ -61,13 +61,13 @@ export default function BusinessIntro() {
                   {/* Decorative corner glow */}
                   <div className="absolute -top-12 -right-12 w-24 h-24 bg-[#2B4C8C]/5 rounded-full group-hover:scale-150 transition-transform duration-500" />
                   
-                  <div className="text-[15px] font-bold text-slate-400 mb-2 tracking-wide uppercase">
+                  <div className="text-[15px] font-bold text-slate-600 mb-2 tracking-wide uppercase">
                     {stat.label}
                   </div>
                   <div className="text-3xl md:text-4xl font-black text-[#2B4C8C] mb-3 font-sans tracking-tight">
                     {stat.value}
                   </div>
-                  <div className="text-sm font-semibold text-slate-500 mt-auto leading-relaxed">
+                  <div className="text-sm font-bold text-slate-700 mt-auto leading-relaxed">
                     {stat.desc}
                   </div>
                 </div>
@@ -85,7 +85,7 @@ export default function BusinessIntro() {
               <h3 className="text-2xl md:text-3xl font-extrabold text-[#0A1A2F] mt-4">
                 5대 사업 영역 프로세스
               </h3>
-              <p className="text-slate-500 text-sm mt-3">
+              <p className="text-slate-700 font-semibold text-sm mt-3">
                 각 사업 영역이 유기적으로 연계되어 원자재 입고부터 최종 배송까지 하나의 끊김 없는 물류 워크플로우를 형성합니다.
               </p>
               <div className="w-16 h-1 bg-[#2B4C8C] mx-auto mt-4 rounded-full" />
@@ -129,7 +129,7 @@ export default function BusinessIntro() {
                       <h4 className="text-lg font-bold text-[#0A1A2F] group-hover:text-[#2B4C8C] transition-colors mb-2">
                         {item.title}
                       </h4>
-                      <p className="text-slate-500 text-xs leading-relaxed group-hover:text-slate-700 transition-colors font-medium">
+                      <p className="text-slate-700 text-xs leading-relaxed group-hover:text-slate-900 transition-colors font-semibold">
                         {item.desc}
                       </p>
                       
@@ -156,7 +156,7 @@ export default function BusinessIntro() {
             <h3 className="text-2xl md:text-3xl font-extrabold text-[#0A1A2F] mb-6">
               귀사의 공급망 혁신, 삼원종합물류와 함께 시작하십시오
             </h3>
-            <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-10 max-w-2xl mx-auto">
+            <p className="text-slate-700 font-semibold text-sm md:text-base leading-relaxed mb-10 max-w-2xl mx-auto">
               34년간 검증된 현장 운영 역량과 6개 전문 계열사의 통합 인프라가 귀사의 물류 비용을 절감하고, 서비스 품질을 높이며, 공급망 리스크를 차단합니다.
             </p>
             <Link
