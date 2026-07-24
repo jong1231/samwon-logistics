@@ -108,7 +108,7 @@ export default function BusinessPage({ contentKey }) {
                 
                 <div className="w-12 h-1 bg-[#2B4C8C] mb-8 rounded-full" />
                 
-                <p className="text-slate-700 text-base md:text-lg leading-relaxed font-medium">
+                <p className="text-slate-800 text-base md:text-lg leading-relaxed font-semibold whitespace-pre-line">
                   {data.overview}
                 </p>
               </ScrollReveal>
@@ -153,27 +153,33 @@ export default function BusinessPage({ contentKey }) {
               const sequenceNum = String(i + 1).padStart(2, '0')
               return (
                 <ScrollReveal key={i} delay={i * 100}>
-                  <div className="relative bg-white border border-slate-100 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col h-full overflow-hidden">
-                    
-                    {/* Big display sequence number (PDF layout match) */}
-                    <div className="absolute top-6 right-8 text-5xl font-black text-slate-100 group-hover:text-[#2B4C8C]/8 transition-colors duration-300 select-none">
+                  <div className="relative bg-white border-2 border-slate-100 hover:border-[#2B4C8C]/40 rounded-3xl p-8 shadow-md hover:shadow-2xl hover:shadow-[#2B4C8C]/10 hover:-translate-y-2 transition-all duration-300 group flex flex-col h-full overflow-hidden">
+
+                    {/* Top accent bar */}
+                    <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#2B4C8C] via-[#4A6FB5] to-[#E07A5F] opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
+
+                    {/* Big display sequence number */}
+                    <div className="absolute top-7 right-8 text-5xl font-black text-[#2B4C8C]/10 group-hover:text-[#2B4C8C]/25 transition-colors duration-300 select-none">
                       {sequenceNum}
                     </div>
 
                     {/* Emoji / Icon Container */}
-                    <div className="w-14 h-14 bg-[#2B4C8C]/5 group-hover:bg-[#2B4C8C] rounded-2xl flex items-center justify-center text-2xl group-hover:shadow-lg group-hover:shadow-[#2B4C8C]/20 transition-all duration-300 mb-6">
-                      <span className="transform group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 bg-gradient-to-br from-[#2B4C8C] to-[#1E3563] rounded-2xl flex items-center justify-center text-3xl shadow-lg shadow-[#2B4C8C]/25 group-hover:shadow-xl group-hover:shadow-[#2B4C8C]/35 group-hover:scale-110 transition-all duration-300 mb-6">
+                      <span className="drop-shadow-sm">
                         {item.icon}
                       </span>
                     </div>
 
                     {/* Title */}
-                    <h4 className="text-lg font-bold text-[#0A1A2F] mb-3 group-hover:text-[#2B4C8C] transition-colors duration-300">
+                    <h4 className="text-lg font-extrabold text-[#0A1A2F] mb-2 group-hover:text-[#2B4C8C] transition-colors duration-300">
                       {item.title}
                     </h4>
 
+                    {/* Title underline accent */}
+                    <div className="w-8 h-0.5 bg-[#2B4C8C]/30 group-hover:w-14 group-hover:bg-[#2B4C8C] rounded-full mb-4 transition-all duration-300" />
+
                     {/* Description */}
-                    <p className="text-slate-500 text-sm leading-relaxed font-medium">
+                    <p className="text-slate-700 text-sm leading-relaxed font-semibold">
                       {item.desc}
                     </p>
                   </div>
