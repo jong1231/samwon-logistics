@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import PageBanner from '../../components/common/PageBanner'
 import ScrollReveal from '../../components/common/ScrollReveal'
+import { verifyStaffLogin, sha256Hex } from '../../data/staffAccounts'
 
 const DEFAULT_POSTINGS = [
   {
@@ -53,12 +54,64 @@ const DEFAULT_POSTINGS = [
   }
 ]
 
+const SESSION_KEY = 'samwon_staff_session'
+
 export default function DriverJobs() {
   const [postings, setPostings] = useState([])
   const [filter, setFilter] = useState('전체')
-  const [isAdminMode, setIsAdminMode] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [editingPost, setEditingPost] = useState(null)
+
+  // ── 직원 로그인 상태 ──
+  const [staffUser, setStaffUser] = useState(() => {
+    try {
+      const saved = sessionStorage.getItem(SESSION_KEY)
+      return saved ? JSON.parse(saved) : null
+    } catch {
+      return null
+    }
+  })
+  const [isLoginOpen, setIsLoginOpen] = useState(false)
+  const [loginForm, setLoginForm] = useState({ id: '', password: '' })
+  const [loginError, setLoginError] = useState('')
+  const [loginLoading, setLoginLoading] = useState(false)
+
+  // 관리자용 해시 생성기
+  const [hashInput, setHashInput] = useState('')
+  const [hashOutput, setHashOutput] = useState('')
+
+  const isAdminMode = !!staffUser // 로그인한 직원만 관리 기능 사용 가능
+
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    if (!loginForm.id || !loginForm.password) {
+      setLoginError('아이디와 비밀번호를 입력해 주세요.')
+      return
+    }
+    setLoginLoading(true)
+    setLoginError('')
+    const user = await verifyStaffLogin(loginForm.id, loginForm.password)
+    setLoginLoading(false)
+    if (!user) {
+      setLoginError('아이디 또는 비밀번호가 일치하지 않습니다.')
+      return
+    }
+    setStaffUser(user)
+    sessionStorage.setItem(SESSION_KEY, JSON.stringify(user))
+    setIsLoginOpen(false)
+    setLoginForm({ id: '', password: '' })
+  }
+
+  const handleLogout = () => {
+    setStaffUser(null)
+    sessionStorage.removeItem(SESSION_KEY)
+  }
+
+  const handleGenerateHash = async () => {
+    if (!hashInput) return
+    const hash = await sha256Hex(hashInput)
+    setHashOutput(hash)
+  }
 
   // Form states
   const [form, setForm] = useState({
@@ -170,22 +223,28 @@ export default function DriverJobs() {
               </div>
 
               <div className="flex flex-wrap items-center gap-4">
-                {/* Admin Mode Switch Toggle */}
-                <div className="flex items-center gap-3 bg-slate-100/80 px-4 py-2.5 rounded-xl border border-slate-200/50">
-                  <span className="text-xs font-bold text-slate-600">직원 관리자 모드</span>
+                {/* 직원 로그인 / 로그아웃 */}
+                {staffUser ? (
+                  <div className="flex items-center gap-3 bg-[#2B4C8C]/5 px-4 py-2.5 rounded-xl border border-[#2B4C8C]/15">
+                    <span className="text-xs font-bold text-[#2B4C8C]">
+                      👤 {staffUser.name}
+                      {staffUser.role === 'admin' && <span className="ml-1.5 text-[10px] bg-[#2B4C8C] text-white px-1.5 py-0.5 rounded-md">관리자</span>}
+                    </span>
+                    <button
+                      onClick={handleLogout}
+                      className="text-xs font-bold text-slate-500 hover:text-red-500 transition-colors"
+                    >
+                      로그아웃
+                    </button>
+                  </div>
+                ) : (
                   <button
-                    onClick={() => setIsAdminMode(!isAdminMode)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 focus:outline-none ${
-                      isAdminMode ? 'bg-[#2B4C8C]' : 'bg-slate-300'
-                    }`}
+                    onClick={() => { setIsLoginOpen(true); setLoginError('') }}
+                    className="px-4 py-2.5 bg-slate-100/80 hover:bg-slate-200 text-slate-600 font-bold text-xs rounded-xl border border-slate-200/50 transition-colors"
                   >
-                    <span
-                      className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300 ${
-                        isAdminMode ? 'translate-x-6' : 'translate-x-1'
-                      }`}
-                    />
+                    🔐 직원 로그인
                   </button>
-                </div>
+                )}
 
                 {isAdminMode && (
                   <button
@@ -457,6 +516,107 @@ export default function DriverJobs() {
             </form>
           </div>
         </div>
+      )}
+
+      {/* 직원 로그인 모달 */}
+      {isLoginOpen && (
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden border border-slate-100">
+            <div className="bg-[#0A1A2F] px-6 py-4 flex justify-between items-center text-white">
+              <h3 className="font-extrabold text-base">🔐 직원 로그인</h3>
+              <button
+                onClick={() => setIsLoginOpen(false)}
+                className="text-slate-400 hover:text-white font-bold text-xl"
+              >
+                &times;
+              </button>
+            </div>
+            <form onSubmit={handleLogin} className="p-6 space-y-4">
+              <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                차주구인 공고 등록·수정은 삼원종합물류 임직원 전용 기능입니다. 부여받은 아이디로 로그인해 주세요.
+              </p>
+              <div>
+                <label className="text-xs font-bold text-slate-500 block mb-1">아이디</label>
+                <input
+                  type="text"
+                  value={loginForm.id}
+                  onChange={(e) => setLoginForm({ ...loginForm, id: e.target.value })}
+                  placeholder="직원 아이디"
+                  autoComplete="username"
+                  className="w-full px-3 py-2.5 border border-slate-200 rounded-xl text-slate-700 text-sm font-medium focus:outline-none focus:border-[#2B4C8C]"
+                />
+              </div>
+              <div>
+                <label className="text-xs font-bold text-slate-500 block mb-1">비밀번호</label>
+                <input
+                  type="password"
+                  value={loginForm.password}
+                  onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+                  placeholder="비밀번호"
+                  autoComplete="current-password"
+                  className="w-full px-3 py-2.5 border border-slate-200 rounded-xl text-slate-700 text-sm font-medium focus:outline-none focus:border-[#2B4C8C]"
+                />
+              </div>
+              {loginError && (
+                <p className="text-red-500 text-xs font-bold">{loginError}</p>
+              )}
+              <button
+                type="submit"
+                disabled={loginLoading}
+                className="w-full py-3 bg-[#2B4C8C] hover:bg-[#1E3563] disabled:opacity-60 text-white font-bold text-sm rounded-xl transition-colors shadow-sm"
+              >
+                {loginLoading ? '확인 중...' : '로그인'}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* 관리자 전용: 신규 직원 비밀번호 해시 생성기 */}
+      {staffUser?.role === 'admin' && (
+        <section className="py-12 bg-slate-50 border-t border-slate-100">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-white rounded-3xl border border-slate-200/70 p-6 shadow-sm">
+              <h3 className="text-sm font-extrabold text-[#0A1A2F] mb-1">🛠️ 관리자 도구 — 신규 직원 비밀번호 해시 생성기</h3>
+              <p className="text-xs text-slate-500 font-medium mb-4 leading-relaxed">
+                새 직원 계정을 추가하려면 비밀번호를 입력해 해시값을 생성한 뒤,
+                GitHub의 <code className="bg-slate-100 px-1 rounded">src/data/staffAccounts.js</code> 파일에
+                아이디·이름과 함께 한 줄 추가하고 커밋하세요.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-2">
+                <input
+                  type="text"
+                  value={hashInput}
+                  onChange={(e) => setHashInput(e.target.value)}
+                  placeholder="새 직원의 비밀번호 입력"
+                  className="flex-1 px-3 py-2.5 border border-slate-200 rounded-xl text-slate-700 text-sm font-medium focus:outline-none focus:border-[#2B4C8C]"
+                />
+                <button
+                  onClick={handleGenerateHash}
+                  className="px-5 py-2.5 bg-[#2B4C8C] hover:bg-[#1E3563] text-white font-bold text-xs rounded-xl transition-colors"
+                >
+                  해시 생성
+                </button>
+              </div>
+              {hashOutput && (
+                <div className="mt-3">
+                  <label className="text-[10px] font-bold text-slate-400 block mb-1">생성된 해시값 (passwordHash에 붙여넣기)</label>
+                  <div className="flex gap-2">
+                    <code className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-[11px] text-slate-700 break-all">
+                      {hashOutput}
+                    </code>
+                    <button
+                      onClick={() => navigator.clipboard.writeText(hashOutput)}
+                      className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs rounded-xl transition-colors shrink-0"
+                    >
+                      📋 복사
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
       )}
     </>
   )
