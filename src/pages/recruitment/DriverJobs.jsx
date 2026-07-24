@@ -76,9 +76,11 @@ export default function DriverJobs() {
   const [loginError, setLoginError] = useState('')
   const [loginLoading, setLoginLoading] = useState(false)
 
-  // 관리자용 해시 생성기
-  const [hashInput, setHashInput] = useState('')
-  const [hashOutput, setHashOutput] = useState('')
+  // 관리자용 직원 계정 부여 도구
+  const [newStaff, setNewStaff] = useState({ id: '', name: '', password: '', role: 'staff' })
+  const [staffCodeOutput, setStaffCodeOutput] = useState('')
+  const [staffCodeError, setStaffCodeError] = useState('')
+  const [copied, setCopied] = useState(false)
 
   const isAdminMode = !!staffUser // 로그인한 직원만 관리 기능 사용 가능
 
@@ -107,10 +109,24 @@ export default function DriverJobs() {
     sessionStorage.removeItem(SESSION_KEY)
   }
 
-  const handleGenerateHash = async () => {
-    if (!hashInput) return
-    const hash = await sha256Hex(hashInput)
-    setHashOutput(hash)
+  const handleCreateStaffAccount = async () => {
+    setStaffCodeError('')
+    setCopied(false)
+    const id = newStaff.id.trim()
+    const name = newStaff.name.trim()
+    const password = newStaff.password
+    if (!id || !name || !password) {
+      setStaffCodeError('아이디, 이름, 비밀번호를 모두 입력해 주세요.')
+      return
+    }
+    if (!/^[A-Za-z0-9_]+$/.test(id)) {
+      setStaffCodeError('아이디는 영문·숫자·밑줄(_)만 사용할 수 있습니다.')
+      return
+    }
+    const hash = await sha256Hex(password)
+    const roleLabel = newStaff.role === 'admin' ? '관리자' : '직원'
+    const code = `  { id: '${id}', name: '${name}', role: '${newStaff.role}', passwordHash: '${hash}' }, // ${roleLabel} · 비밀번호: ${password}`
+    setStaffCodeOutput(code)
   }
 
   // Form states
@@ -572,46 +588,97 @@ export default function DriverJobs() {
         </div>
       )}
 
-      {/* 관리자 전용: 신규 직원 비밀번호 해시 생성기 */}
+      {/* 관리자 전용: 직원 계정 부여 도구 */}
       {staffUser?.role === 'admin' && (
         <section className="py-12 bg-slate-50 border-t border-slate-100">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-white rounded-3xl border border-slate-200/70 p-6 shadow-sm">
-              <h3 className="text-sm font-extrabold text-[#0A1A2F] mb-1">🛠️ 관리자 도구 — 신규 직원 비밀번호 해시 생성기</h3>
-              <p className="text-xs text-slate-500 font-medium mb-4 leading-relaxed">
-                새 직원 계정을 추가하려면 비밀번호를 입력해 해시값을 생성한 뒤,
-                GitHub의 <code className="bg-slate-100 px-1 rounded">src/data/staffAccounts.js</code> 파일에
-                아이디·이름과 함께 한 줄 추가하고 커밋하세요.
+              <h3 className="text-sm font-extrabold text-[#0A1A2F] mb-1">🛠️ 관리자 도구 — 직원 계정 부여</h3>
+              <p className="text-xs text-slate-500 font-medium mb-5 leading-relaxed">
+                새 직원에게 로그인 아이디를 부여합니다. 아래에 아이디·이름·비밀번호를 입력하고
+                <span className="font-bold text-slate-700"> [계정 코드 생성]</span>을 누르면,
+                <code className="bg-slate-100 px-1 rounded mx-0.5">src/data/staffAccounts.js</code>에 붙여넣을 코드가 만들어집니다.
+                그 코드를 복사해 GitHub에서 해당 파일 <code className="bg-slate-100 px-1 rounded mx-0.5">staffAccounts = [</code> 배열 안에 붙여넣고 커밋하면 계정이 생성됩니다.
               </p>
-              <div className="flex flex-col sm:flex-row gap-2">
-                <input
-                  type="text"
-                  value={hashInput}
-                  onChange={(e) => setHashInput(e.target.value)}
-                  placeholder="새 직원의 비밀번호 입력"
-                  className="flex-1 px-3 py-2.5 border border-slate-200 rounded-xl text-slate-700 text-sm font-medium focus:outline-none focus:border-[#2B4C8C]"
-                />
-                <button
-                  onClick={handleGenerateHash}
-                  className="px-5 py-2.5 bg-[#2B4C8C] hover:bg-[#1E3563] text-white font-bold text-xs rounded-xl transition-colors"
-                >
-                  해시 생성
-                </button>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="text-[11px] font-bold text-slate-500 block mb-1">아이디 (영문/숫자)</label>
+                  <input
+                    type="text"
+                    value={newStaff.id}
+                    onChange={(e) => setNewStaff({ ...newStaff, id: e.target.value })}
+                    placeholder="예: staff03"
+                    className="w-full px-3 py-2.5 border border-slate-200 rounded-xl text-slate-700 text-sm font-medium focus:outline-none focus:border-[#2B4C8C]"
+                  />
+                </div>
+                <div>
+                  <label className="text-[11px] font-bold text-slate-500 block mb-1">이름</label>
+                  <input
+                    type="text"
+                    value={newStaff.name}
+                    onChange={(e) => setNewStaff({ ...newStaff, name: e.target.value })}
+                    placeholder="예: 홍길동"
+                    className="w-full px-3 py-2.5 border border-slate-200 rounded-xl text-slate-700 text-sm font-medium focus:outline-none focus:border-[#2B4C8C]"
+                  />
+                </div>
+                <div>
+                  <label className="text-[11px] font-bold text-slate-500 block mb-1">초기 비밀번호</label>
+                  <input
+                    type="text"
+                    value={newStaff.password}
+                    onChange={(e) => setNewStaff({ ...newStaff, password: e.target.value })}
+                    placeholder="직원에게 전달할 비밀번호"
+                    className="w-full px-3 py-2.5 border border-slate-200 rounded-xl text-slate-700 text-sm font-medium focus:outline-none focus:border-[#2B4C8C]"
+                  />
+                </div>
+                <div>
+                  <label className="text-[11px] font-bold text-slate-500 block mb-1">권한</label>
+                  <select
+                    value={newStaff.role}
+                    onChange={(e) => setNewStaff({ ...newStaff, role: e.target.value })}
+                    className="w-full px-3 py-2.5 border border-slate-200 rounded-xl text-slate-700 text-sm font-medium focus:outline-none focus:border-[#2B4C8C] bg-white"
+                  >
+                    <option value="staff">직원 (공고 등록·수정·삭제)</option>
+                    <option value="admin">관리자 (직원 계정 부여 포함)</option>
+                  </select>
+                </div>
               </div>
-              {hashOutput && (
-                <div className="mt-3">
-                  <label className="text-[10px] font-bold text-slate-400 block mb-1">생성된 해시값 (passwordHash에 붙여넣기)</label>
-                  <div className="flex gap-2">
-                    <code className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-[11px] text-slate-700 break-all">
-                      {hashOutput}
-                    </code>
+
+              <button
+                onClick={handleCreateStaffAccount}
+                className="mt-4 w-full sm:w-auto px-6 py-2.5 bg-[#2B4C8C] hover:bg-[#1E3563] text-white font-bold text-sm rounded-xl transition-colors"
+              >
+                계정 코드 생성
+              </button>
+
+              {staffCodeError && (
+                <p className="text-red-500 text-xs font-bold mt-3">{staffCodeError}</p>
+              )}
+
+              {staffCodeOutput && (
+                <div className="mt-5 bg-slate-900 rounded-2xl p-4">
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="text-[11px] font-bold text-slate-300">📋 staffAccounts.js 배열 안에 붙여넣을 코드</label>
                     <button
-                      onClick={() => navigator.clipboard.writeText(hashOutput)}
-                      className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs rounded-xl transition-colors shrink-0"
+                      onClick={() => {
+                        navigator.clipboard.writeText(staffCodeOutput)
+                        setCopied(true)
+                        setTimeout(() => setCopied(false), 2000)
+                      }}
+                      className="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-white font-bold text-[11px] rounded-lg transition-colors shrink-0"
                     >
-                      📋 복사
+                      {copied ? '✓ 복사됨' : '복사'}
                     </button>
                   </div>
+                  <code className="block text-[11px] text-emerald-300 break-all whitespace-pre-wrap leading-relaxed font-mono">
+                    {staffCodeOutput}
+                  </code>
+                  <p className="text-[10px] text-slate-400 mt-3 leading-relaxed">
+                    ⚠️ 위 코드 끝의 주석(<span className="text-slate-300">// ...비밀번호</span>)은 참고용입니다.
+                    비밀번호 원문은 직원에게 안전하게 전달한 뒤, 원하시면 주석 부분을 지우고 커밋해도 됩니다.
+                    실제 로그인 검증에는 해시값만 사용됩니다.
+                  </p>
                 </div>
               )}
             </div>
