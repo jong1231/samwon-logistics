@@ -72,6 +72,21 @@ export function ContentProvider({ children }) {
       migrated = true
     }
 
+    // Migrate contactPage: ensure faqs/processSteps exist so admin edits reflect on the Contact page
+    if (!merged.contactPage) {
+      merged.contactPage = defaultContent.contactPage
+      migrated = true
+    } else {
+      if (!Array.isArray(merged.contactPage.faqs)) {
+        merged.contactPage.faqs = defaultContent.contactPage.faqs
+        migrated = true
+      }
+      if (!Array.isArray(merged.contactPage.processSteps)) {
+        merged.contactPage.processSteps = defaultContent.contactPage.processSteps
+        migrated = true
+      }
+    }
+
     if (migrated) {
       saveContent(merged)
     }
