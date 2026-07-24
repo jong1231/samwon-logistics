@@ -1,30 +1,27 @@
 import { useState, useEffect } from 'react'
 import { useContent } from '../../context/ContentContext'
 import ScrollReveal from '../common/ScrollReveal'
-
-// Professional logistics photography (Unsplash License — free for commercial use)
-const heroScene1 = 'https://images.unsplash.com/photo-1695222833131-54ee679ae8e5?w=1920&q=80' // 간선 수송 트럭 주행
-const heroScene2 = 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=1920&q=80' // 물류센터 도크 항공뷰
-const heroScene3 = 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=1920&q=80'   // 대형 물류창고 내부
-const heroScene4 = 'https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=1920&q=80' // 도심 물류 네트워크 야경
+import heroSceneWide from '../../assets/hero_scene_wide.png'   // 삼원 로고 트럭 주행 (와이드)
+import heroSceneFront from '../../assets/hero_scene_front.png' // 삼원 로고 트럭 정면 주행
+import heroSceneZoom from '../../assets/hero_scene_zoom.png'   // 삼원 로고 트럭 클로즈업
+import heroScene1Img from '../../assets/hero_scene1.png'       // 삼원 트럭 고속도로 주행
 
 /**
- * 4-Scene Cinematic Image Slideshow Hero Section
- * - Loops through 4 different views of the truck driving on the highway
- * - Changes every 5 seconds with a smooth cross-fade transition
- * - Each scene has a custom Ken Burns animation (slow pan/zoom) to feel like a video clip
+ * 4-Scene Cinematic Hero — 삼원종합물류 공식 로고 트럭이 주인공
+ * - 자사 제작 트럭 이미지 4장을 5초마다 크로스페이드로 전환
+ * - 각 장면에 주행감을 주는 Ken Burns(확대·이동) 애니메이션 적용
  */
 export default function Hero() {
   const { content } = useContent()
   const { hero } = content
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  // 4 Scenes definition
+  // 4 Scenes — 삼원 로고 트럭 주인공
   const slides = [
-    { image: heroScene1, animationClass: 'animate-kb-1' },
-    { image: heroScene2, animationClass: 'animate-kb-2' },
-    { image: heroScene3, animationClass: 'animate-kb-3' },
-    { image: heroScene4, animationClass: 'animate-kb-4' }
+    { image: heroSceneWide, animationClass: 'animate-kb-1' },
+    { image: heroScene1Img, animationClass: 'animate-kb-2' },
+    { image: heroSceneFront, animationClass: 'animate-kb-3' },
+    { image: heroSceneZoom, animationClass: 'animate-kb-4' }
   ]
 
   // Slide transition interval (5000ms = 5s)
