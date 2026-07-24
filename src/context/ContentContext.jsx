@@ -55,6 +55,23 @@ export function ContentProvider({ children }) {
       }
     })
     
+    // Migrate CEO message: remove literal "\n" text (double-escaped) → real newlines
+    if (merged.ceo && typeof merged.ceo.message === 'string' && merged.ceo.message.includes('\\n')) {
+      merged.ceo.message = merged.ceo.message.replace(/\\n/g, '\n')
+      migrated = true
+    }
+
+    // Migrate distribution strengths: upgrade to 4-card layout with 냉장·냉동 전문배송 + new 퀵커머스 desc
+    if (
+      merged.businessPages &&
+      merged.businessPages.distribution &&
+      Array.isArray(merged.businessPages.distribution.strengths) &&
+      merged.businessPages.distribution.strengths.length < 4
+    ) {
+      merged.businessPages.distribution.strengths = defaultContent.businessPages.distribution.strengths
+      migrated = true
+    }
+
     if (migrated) {
       saveContent(merged)
     }
