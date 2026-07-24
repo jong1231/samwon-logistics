@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useContent } from '../context/ContentContext'
 import { imageToBase64 } from '../utils/storage'
+import { sha256Hex } from '../data/staffAccounts'
 
 /**
  * 리뉴얼된 관리자(어드민) 페이지
@@ -22,6 +23,32 @@ export default function Admin() {
   const [activeSubTab, setActiveSubTab] = useState('intro') // 기본 서브탭: 회사소개 상세
   const [editContent, setEditContent] = useState(null)
   const [saved, setSaved] = useState(false)
+
+  // 직원 아이디 생성 도구
+  const [newStaff, setNewStaff] = useState({ id: '', name: '', password: '', role: 'staff' })
+  const [staffCodeOutput, setStaffCodeOutput] = useState('')
+  const [staffCodeError, setStaffCodeError] = useState('')
+  const [staffCopied, setStaffCopied] = useState(false)
+
+  const handleCreateStaffAccount = async () => {
+    setStaffCodeError('')
+    setStaffCopied(false)
+    const id = newStaff.id.trim()
+    const name = newStaff.name.trim()
+    const password = newStaff.password
+    if (!id || !name || !password) {
+      setStaffCodeError('아이디, 이름, 비밀번호를 모두 입력해 주세요.')
+      return
+    }
+    if (!/^[A-Za-z0-9_]+$/.test(id)) {
+      setStaffCodeError('아이디는 영문·숫자·밑줄(_)만 사용할 수 있습니다.')
+      return
+    }
+    const hash = await sha256Hex(password)
+    const roleLabel = newStaff.role === 'admin' ? '관리자' : '직원'
+    const code = `  { id: '${id}', name: '${name}', role: '${newStaff.role}', passwordHash: '${hash}' }, // ${roleLabel} · 비밀번호: ${password}`
+    setStaffCodeOutput(code)
+  }
 
   const handleLogin = (e) => {
     e.preventDefault()
@@ -812,11 +839,67 @@ export default function Admin() {
                   </div>
                 ))}
               </div>
+
+              {/* 직원 아이디 생성 도구 */}
+              <div className="mt-10 border-t pt-8">
+                <h2 className="text-xl font-extrabold text-slate-800 mb-2">🔑 차주구인 담당 직원 아이디 생성</h2>
+                <p className="text-sm text-slate-500 mb-5 leading-relaxed">
+                  차주구인 공고를 등록·수정할 수 있는 직원 로그인 계정을 만듭니다. 아래에 아이디·이름·비밀번호를 입력하고
+                  <span className="font-bold text-slate-700"> [계정 코드 생성]</span>을 누르면,
+                  <code className="bg-slate-100 px-1 rounded mx-0.5">src/data/staffAccounts.js</code> 파일에 붙여넣을 코드가 만들어집니다.
+                  그 코드를 GitHub에서 해당 파일의 <code className="bg-slate-100 px-1 rounded mx-0.5">staffAccounts = [ ]</code> 배열 안에 붙여넣고 커밋하면 계정이 생성됩니다.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 border p-5 rounded-xl">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-500 mb-1">아이디 (영문/숫자)</label>
+                    <input type="text" value={newStaff.id} onChange={e => setNewStaff({ ...newStaff, id: e.target.value })} placeholder="예: staff03" className="w-full px-3 py-2 border rounded-lg text-sm" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-500 mb-1">이름</label>
+                    <input type="text" value={newStaff.name} onChange={e => setNewStaff({ ...newStaff, name: e.target.value })} placeholder="예: 홍길동" className="w-full px-3 py-2 border rounded-lg text-sm" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-500 mb-1">초기 비밀번호</label>
+                    <input type="text" value={newStaff.password} onChange={e => setNewStaff({ ...newStaff, password: e.target.value })} placeholder="직원에게 전달할 비밀번호" className="w-full px-3 py-2 border rounded-lg text-sm" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-500 mb-1">권한</label>
+                    <select value={newStaff.role} onChange={e => setNewStaff({ ...newStaff, role: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-sm bg-white">
+                      <option value="staff">직원 (공고 등록·수정·삭제)</option>
+                      <option value="admin">관리자 (직원 계정 부여 포함)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button onClick={handleCreateStaffAccount} className="mt-4 px-6 py-2.5 bg-[#2B4C8C] hover:bg-[#1E3563] text-white font-bold text-sm rounded-lg transition-colors">
+                  계정 코드 생성
+                </button>
+
+                {staffCodeError && <p className="text-red-500 text-xs font-bold mt-3">{staffCodeError}</p>}
+
+                {staffCodeOutput && (
+                  <div className="mt-5 bg-slate-900 rounded-xl p-4">
+                    <div className="flex justify-between items-center mb-2">
+                      <label className="text-[11px] font-bold text-slate-300">📋 staffAccounts.js 배열 안에 붙여넣을 코드</label>
+                      <button
+                        onClick={() => { navigator.clipboard.writeText(staffCodeOutput); setStaffCopied(true); setTimeout(() => setStaffCopied(false), 2000) }}
+                        className="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-white font-bold text-[11px] rounded-lg transition-colors"
+                      >
+                        {staffCopied ? '✓ 복사됨' : '복사'}
+                      </button>
+                    </div>
+                    <code className="block text-[11px] text-emerald-300 break-all whitespace-pre-wrap leading-relaxed font-mono">
+                      {staffCodeOutput}
+                    </code>
+                    <p className="text-[10px] text-slate-400 mt-3 leading-relaxed">
+                      ⚠️ 코드 끝의 주석(비밀번호)은 참고용입니다. 비밀번호를 직원에게 전달한 뒤 원하시면 주석을 지우고 커밋해도 됩니다. 로그인 검증에는 해시값만 사용됩니다.
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
           )}
-
-
-          {/* ==================== 4. 고객센터 관련 편집 ==================== */}
           {activeTab === 'contact' && (
             <div className="space-y-8">
               <div className="space-y-6">
