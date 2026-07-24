@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useContent } from '../../context/ContentContext'
 import ScrollReveal from '../common/ScrollReveal'
-import heroSceneWide from '../../assets/hero_scene_wide.png'   // 삼원 로고 트럭 주행 (와이드)
-import heroSceneFront from '../../assets/hero_scene_front.png' // 삼원 로고 트럭 정면 주행
-import heroSceneZoom from '../../assets/hero_scene_zoom.png'   // 삼원 로고 트럭 클로즈업
-import heroScene1Img from '../../assets/hero_scene1.png'       // 삼원 트럭 고속도로 주행
+import heroLogoTruck from '../../assets/hero_scene1_logo.png'  // 삼원 로고 부착 트럭 (주인공)
+import heroSceneWide from '../../assets/hero_scene_wide.png'   // 삼원 트럭 산길 주행
+import heroScene2Img from '../../assets/hero_scene2.png'       // 물류센터 도크
+import heroScene4Img from '../../assets/hero_scene4.png'       // 도심 물류 네트워크
 
 /**
- * 4-Scene Cinematic Hero — 삼원종합물류 공식 로고 트럭이 주인공
- * - 자사 제작 트럭 이미지 4장을 5초마다 크로스페이드로 전환
+ * 4-Scene Cinematic Hero — 삼원종합물류 물류 운송 장면
+ * - 로고를 부착한 트럭을 대표 장면(첫 슬라이드)으로 배치
+ * - 물류 운송 관련 자사 이미지 4장을 5초마다 크로스페이드로 전환
  * - 각 장면에 주행감을 주는 Ken Burns(확대·이동) 애니메이션 적용
  */
 export default function Hero() {
@@ -16,12 +17,12 @@ export default function Hero() {
   const { hero } = content
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  // 4 Scenes — 삼원 로고 트럭 주인공
+  // 4 Scenes — 로고 트럭이 주인공, 물류 운송 장면 구성
   const slides = [
-    { image: heroSceneWide, animationClass: 'animate-kb-1' },
-    { image: heroScene1Img, animationClass: 'animate-kb-2' },
-    { image: heroSceneFront, animationClass: 'animate-kb-3' },
-    { image: heroSceneZoom, animationClass: 'animate-kb-4' }
+    { image: heroLogoTruck, animationClass: 'animate-kb-1' },
+    { image: heroSceneWide, animationClass: 'animate-kb-2' },
+    { image: heroScene2Img, animationClass: 'animate-kb-3' },
+    { image: heroScene4Img, animationClass: 'animate-kb-4' }
   ]
 
   // Slide transition interval (5000ms = 5s)
