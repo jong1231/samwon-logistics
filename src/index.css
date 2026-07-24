@@ -123,55 +123,55 @@ body {
 
 /* ===== Cinematic Hero Animations ===== */
 
-/* Scene 1: Slow Zoom In */
+/* Scene 1: 전진 줌인 + 좌측 주행감 */
 .animate-kb-1 {
   animation: kb1 6s ease-in-out infinite alternate;
 }
 @keyframes kb1 {
   0% {
-    transform: scale(1.0) translate(0, 0);
+    transform: scale(1.05) translate(2%, 0);
   }
   100% {
-    transform: scale(1.1) translate(-1%, -0.5%);
+    transform: scale(1.15) translate(-2.5%, -0.5%);
   }
 }
 
-/* Scene 2: Slow Zoom Out + Pan Right */
+/* Scene 2: 우측에서 좌측으로 스쳐 지나가는 주행 */
 .animate-kb-2 {
   animation: kb2 6s ease-in-out infinite alternate;
 }
 @keyframes kb2 {
   0% {
-    transform: scale(1.15) translate(-1%, 0);
+    transform: scale(1.18) translate(3%, 0);
   }
   100% {
-    transform: scale(1.0) translate(1%, 0);
+    transform: scale(1.08) translate(-2%, 0);
   }
 }
 
-/* Scene 3: Slow Zoom In + Pan Up */
+/* Scene 3: 정면 접근 줌인 */
 .animate-kb-3 {
   animation: kb3 6s ease-in-out infinite alternate;
 }
 @keyframes kb3 {
   0% {
-    transform: scale(1.0) translate(0, 0);
+    transform: scale(1.02) translate(-1.5%, 0.5%);
   }
   100% {
-    transform: scale(1.1) translate(0.5%, -1%);
+    transform: scale(1.14) translate(1.5%, -1%);
   }
 }
 
-/* Scene 4: Slow Zoom Out + Pan Down */
+/* Scene 4: 클로즈업 줌아웃 + 좌측 이동 */
 .animate-kb-4 {
   animation: kb4 6s ease-in-out infinite alternate;
 }
 @keyframes kb4 {
   0% {
-    transform: scale(1.1) translate(0.5%, 0.5%);
+    transform: scale(1.15) translate(2%, 0.5%);
   }
   100% {
-    transform: scale(1.0) translate(-0.5%, -0.5%);
+    transform: scale(1.05) translate(-2%, -0.5%);
   }
 }
 
