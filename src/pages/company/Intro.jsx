@@ -277,7 +277,7 @@ export default function Intro() {
               </div>
 
               <div className="text-slate-600 leading-loose text-sm space-y-4">
-                {ceo.message.split('\n').map((paragraph, i) => (
+                {ceo.message.replace(/\\n/g, '\n').split('\n').map((paragraph, i) => (
                   <p key={i} className={paragraph === '' ? 'h-2' : ''}>
                     {paragraph}
                   </p>
